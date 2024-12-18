@@ -1,0 +1,54 @@
+.flex {
+    display: flex;
+
+    &.tile {
+        flex-wrap: wrap;
+        gap: var(--offset-default);
+        height: 100%;
+
+        > * {
+            flex: 0 0 48%;
+        }
+    }
+
+    &.tarif {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: var(--offset-default);
+        justify-content: center;
+        
+        > [class*="card"] {
+            flex: 0 0 30%;
+            max-width: 30%;
+        }
+    }
+
+    @media only screen and (max-width: 1080px) {
+        &.tarif {
+            > [class*="card"] {
+                flex: 0 0 50%;
+                max-width: 48%;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &.tile {
+            > * {
+                flex: 0 0 100%;
+            }
+        }
+
+        &.tarif {
+            flex-direction: column;
+            flex-wrap: unset;
+
+            > [class*="card"] {
+                flex: auto;
+                width: 100%;
+                max-width: none;
+            }
+        }
+    }
+}
+

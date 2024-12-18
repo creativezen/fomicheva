@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header.html')
+
+    <main>
+        <!-- Главный экран  -->
+        <section class="section">
+            <div class="container">
+                <div class="section__hero">
+                    <div class="hero single">
+                        <div class="hero__img">
+                            <picture>
+                                <source media="(max-width: 680px)" srcset="img/hero/hero-single-mobile.jpg 2x" type="image/jpg">
+                                <source media="(min-width: 681px)" srcset="img/hero/hero-single-desktop.jpg 2x" type="image/jpg">
+                                <img src="img/hero/hero-single-desktop.jpg" alt="Как семья заработала 25 млн. на ободках для унитазов">
+                            </picture>
+                        </div>
+                        <div class="hero__content">
+                            <div class="badge-group">
+                                <div class="badge gray">Обновлено: <strong>26.11.2024</strong></div>
+                            </div>
+                            <h1 class="title">Дизайн система</h1>
+                            <!-- <div class="breadcrumbs">
+                                <nav aria-label="breadcrumbs">
+                                    <p>
+                                        <a href="#">Главная</a>
+                                        <span class="separator"> / </span>
+                                        <a href="#">Кейсы</a>
+                                        <span class="separator"> / </span>
+                                        <span class="last">Как семья заработала 25 млн. на ободках для унитазов</span>
+                                    </p>
+                                </nav>
+                            </div> -->
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Файлы обновления -->
+        <section class="section stream">
+            <div class="container">
+                <div class="section__header">
+                    <h5>Програмные файлы проекта:</h5>
+                </div>
+                <div class="section__body">
+                    <div class="grid-group">
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Файлы:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="https://disk.yandex.ru/d/LQUWISr2UmPWcA" target="_blank">CSS, jS, HTML</a>
+                                        <!--/noindex-->
+                                    </div>
+                                    <p>Дата обновления: 27.11.2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @@include('blocks/banner.html')
+        @@include('blocks/hero.html')
+        @@include('blocks/button.html')
+        @@include('blocks/card.html')
+        @@include('blocks/slider.html')
+        @@include('blocks/article.html')
+        @@include('blocks/typography.html')
+        @@include('blocks/form.html')
+
+        @@include('blocks/button-up.html')
+
+        <div class="forweb-modal js-modal">
+            @@include('modals/question.html')
+            @@include('modals/consulting.html')
+            @@include('modals/text-popup.html')
+            @@include('modals/img-popup.html')
+            @@include('modals/video-popup.html')
+            @@include('modals/submit-success.html')
+            @@include('modals/submit-error.html')
+        </div>
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+
+    <script src="js/popups.bundle.js"></script>
+    <script src="js/slider.bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+@use '../mixins/fluid-size' as size;
+
+/* container */
+.container {
+    position: relative;
+	max-width: var(--content-width);
+	margin: 0 auto;
+	padding-top: 0;
+	padding-bottom: 0;
+    padding-inline: var(--offset-default);
+
+    &.fluid {
+        max-width: none;
+    }
+
+    &.setup {
+        padding-inline: calc(var(--offset-fluid) + var(--offset-default));
+    }
+
+    &.box {
+        border-radius: var(--radius-large);
+        overflow: hidden;
+    }
+
+    /* контейнер в шапке со статической высотой и на флексах */
+    .header & {
+        flex: auto;
+    }
+
+    @media only screen and (max-width: 1280px) {
+        &.setup {
+            padding-inline: var(--offset-default);
+        }
+    }
+}
+
+.container-right {
+	/* overflow-x: hidden; */
+	padding-left: calc(
+		(100% - var(--container-width)) / 2 + var(--container-padding)
+	);
+
+	@media (max-width: var(--laptop-size)) {
+		padding-left: var(--container-padding);
+	}
+}
+
+.container-left {
+	/* overflow-x: hidden; */
+	padding-right: calc(
+		(100% - var(--container-width)) / 2 + var(--container-padding)
+	);
+
+	@media (max-width: var(--laptop-size)) {
+		padding-right: var(--container-padding);
+	}
+}

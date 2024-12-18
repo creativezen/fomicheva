@@ -1,0 +1,251 @@
+.background-properties {
+    /* обшщие свойства для фоновых картинок */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* фон для главного экрана страницы Об основателе */ 
+.background-hero-expert {
+    @extend .background-properties;
+
+    z-index: -1;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/hero/bg-hero-expert-desktop.jpg");
+
+    /* версия фона для мобильных */
+    @media only screen and (max-width: 680px) {
+        background-image: url("../img/background/hero/bg-hero-expert-mobile.jpg");
+    }
+}
+
+/* фон для верхнего баннера в главном экране */
+.background-block-top {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/top-desktop-01x2.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/top-tablet-01x2.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/top-mobile-01x2.jpg");
+    }
+}
+
+/* фон для баннера Все о бизнесее в России и зарубежом */
+.background-block-business {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/business-desktop-01x2.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/business-tablet-01x2.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/business-mobile-01x2.jpg");
+    }
+}
+
+/* фан для баннера Станьте партнером */
+.background-block-partner {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/partner-desktop-01x2.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/partner-tablet-01x2.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/partner-mobile-01x2.jpg");
+    }
+}
+
+/* фан для баннера для формы обратной связи */
+.background-block-contact {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/contact-desktop-01x2.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/contact-tablet-01x2.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/contact-mobile-01x2.jpg");
+    }
+}
+
+.background-block-offer {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/bg-block-offer-deskop.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/bg-block-offer-tablet.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/bg-block-offer-mobile.jpg");
+    }
+}
+
+.background-block-marketplace {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/bg-block-marketplace-deskop.jpg");
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/bg-block-marketplace-mobile.jpg");
+    }
+}
+
+.background-block-markets {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/bg-block-markets-deskop.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/bg-block-markets-tablet.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/bg-block-markets-mobile.jpg");
+    }   
+}
+
+.background-block-video {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/block/bg-block-video-deskop.jpg");
+        
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/block/bg-block-video-tablet.jpg");
+    }
+
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/block/bg-block-video-mobile.jpg");
+    }
+}
+
+.background-section-dark-01 {
+    @extend .background-properties;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/section/bg-section-dark-01-desktop.jpg");
+    
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/section/bg-section-dark-01-tablet.jpg");
+    }
+    
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/section/bg-section-dark-01-mobile.jpg");
+    }   
+}
+
+.bg-card-background-dark {
+    @extend .background-properties;
+    
+    background-position: 0 0;
+    
+    background-image: url("../img/background/card/bg-card-background-dark.jpg");
+}
+
+.bg-background-map {
+    @extend .background-properties;
+
+    background-size: 95%;
+    background-image: url("../img/background/section/bg-map-svg.svg");
+}
+
+.background-section-about {
+    @extend .background-properties;
+
+    border-radius: inherit;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/section/bg-section-about-desktop.jpg");
+    
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/section/bg-section-about-tablet.jpg");
+    }
+    
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/section/bg-section-about-mobile.jpg");
+    }
+}
+
+.background-tarif-header {
+    @extend .background-properties;
+
+    background-image: url("../img/background/card/bg-card-tarif.jpg");
+}
+
+.bg-background-format {
+    @extend .background-properties;
+
+    background-position-y: bottom;
+    background-position-x: left;
+    background-size: 40%;
+
+    background-image: url("../img/background/section/bg-section-format.svg");
+
+    @media only screen and (max-width: 680px) {
+        background-size: 70%;
+    }
+}
+
+.bg-background-founder {
+    @extend .background-properties;
+
+    border-radius: inherit;
+
+    /* версия фона для ПК */
+    background-image: url("../img/background/section/bg-section-founder-desktop.jpg");
+    
+    /* версия фона для планшета */
+    @media only screen and (max-width: 980px) {
+        background-image: url("../img/background/section/bg-section-founder-tablet.jpg");
+    }
+    
+    /* версия фона для смартфонов */
+    @media only screen and (max-width: 480px) {
+        background-image: url("../img/background/section/bg-section-founder-mobile.jpg");
+    }
+}

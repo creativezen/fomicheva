@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header.html')
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section__hero">
+                    <div class="hero large">
+                        <div class="hero__img">
+                            <picture>
+                                <source media="(max-width: 680px)" srcset="img/hero/hero-404-mobile.jpg 2x" type="image/jpg">
+                                <source media="(min-width: 681px)" srcset="img/hero/hero-404-desktop.jpg 2x" type="image/jpg">
+                                <img src="img/hero/hero-404-desktop.jpg" alt="Ошибка 404...">
+                            </picture>
+                        </div>
+                        <div class="hero__content">
+                            <h1 class="title">Ошибка 404...</h1>
+                            <div class="hero__tagline"><p>К сожалению такая страница не найдена</p></div>
+                            <a href="#" class="button accent">
+                                <span>На главную</span>
+                                <svg viewBox="0 0 19 20" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.77522 4.81452L13.6769 4.81452C14.1617 4.81452 14.5548 5.20759 14.5548 5.69248L14.5548 13.5941C14.5548 14.079 14.1617 14.4721 13.6769 14.4721C13.192 14.4721 12.7989 14.079 12.7989 13.5941L12.7989 7.81206L5.19244 15.4185L3.95082 14.1769L11.5573 6.57044L5.77522 6.57043C5.29034 6.57043 4.89726 6.17736 4.89726 5.69248C4.89726 5.20759 5.29034 4.81452 5.77522 4.81452Z"></path>
+                                </svg>
+                            </a>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+</body>
+
+</html>

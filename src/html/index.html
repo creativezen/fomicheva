@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header-no-menu.html')
+
+    <main>
+        <!-- Главный экран  -->
+        <section class="section">
+            <div class="container">
+                <div class="section__hero">
+                    <div class="hero single">
+                        <div class="hero__img">
+                            <picture>
+                                <source media="(max-width: 680px)" srcset="img/hero/hero-single-mobile.jpg 2x" type="image/jpg">
+                                <source media="(min-width: 681px)" srcset="img/hero/hero-single-desktop.jpg 2x" type="image/jpg">
+                                <img src="img/hero/hero-single-desktop.jpg" alt="Как семья заработала 25 млн. на ободках для унитазов">
+                            </picture>
+                        </div>
+                        <div class="hero__content">
+                            <div class="badge-group">
+                                <div class="badge gray">Шаблоны, файлы и типология</div>
+                            </div>
+                            <h1 class="title">Frontend</h1>
+                            <div class="tagline">Академия Международного Бизнеса</div>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ветка обновлений -->
+        <section class="section">
+            <div class="container">
+                <div class="section__body">
+                    <div class="article">
+                        <h5>История исправлений:</h5>
+                        <ul class="list-timeline">
+                            <li class="list-timeline__item">
+                                <div class="list-timeline__value"><div class="badge gray">18.12.24</div></div>
+                                <div class="list-timeline__body">
+                                    <div class="article__notion">
+                                        <h6>Шаблон home.html</h6>
+                                        <p>Добавлен новый блок <b>«Полезные статьи»</b> между блоками <b>«Кейсы»</b> и <b>«Полезные видео»</b></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-timeline__item">
+                                <div class="list-timeline__value"><div class="badge gray">09.12.24</div></div>
+                                <div class="list-timeline__body">
+                                    <div class="article__notion">
+                                        <h6>Шаблон founder.html</h6>
+                                        <p>Были добавлены все необходимые js классы и id для написаиня js логики показа карточек</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-timeline__item">
+                                <div class="list-timeline__value"><div class="badge gray">06.12.24</div></div>
+                                <div class="list-timeline__body">
+                                    <div class="article__notion">
+                                        <h6>Всплывающие формы</h6>
+                                        <p>Все всплывающие формы во всех шаблонах перемещены внутрь <b>main</b></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-timeline__item">
+                                <div class="list-timeline__value"><div class="badge gray">02.12.24</div></div>
+                                <div class="list-timeline__body">
+                                    <div class="article__notion">
+                                        <h6>Прелоадер</h6>
+                                        <p>В новой редакции файла <b>ajax-post-loading.js</b> исправлено название id прелоадера, а сам HTML прелоадера можно взять в любом из готовых шаблонов, где есть подгрузка чего-либо через ajax (Программы, Блог, Кейсы, Видео, Главная).</p>
+                                        <p>В функциях <b>startLoading()</b> и <b>stopLoading()</b> добавлена новая логика</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-timeline__item">
+                                <div class="list-timeline__value"><div class="badge gray">29.11.24</div></div>
+                                <div class="list-timeline__body">
+                                    <div class="article__notion">
+                                        <h6>Главный экран статьи</h6>
+                                        <p>Добавлены стили для замены картинки в экране</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Файлы обновления -->
+        <section class="section stream">
+            <div class="container">
+                <div class="section__header">
+                    <h5>Програмные файлы проекта:</h5>
+                </div>
+                <div class="section__body">
+                    <div class="grid-group">
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Файлы:</div>
+                                        <div class="badge green">18.12.2024</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="https://disk.yandex.ru/d/LQUWISr2UmPWcA" target="_blank">CSS, jS, HTML, ZIP</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Файл:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="https://disk.yandex.ru/d/aSmUj4gRcdccbQ" target="_blank">ajax-post-loading.js</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Готовый шаблоны  -->
+        <section class="section stream" data-stream-top="no">
+            <div class="container">
+                <div class="section__header">
+                    <h5>Готовые шаблоны</h5>
+                </div>
+                <div class="section__body">
+                    <div class="grid-group">
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="founder.html" target="_blank">Об основателе</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                        <!-- <div class="badge green">Новый</div> -->
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="programms-single.html" target="_blank">Описание программы</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                        <div class="badge black">Измененный</div>
+                                        <div class="badge green">18.12.24</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="home.html" target="_blank">Главная</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="books.html" target="_blank">Книги Анны Фомичевой</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="academy.html" target="_blank">Об Академии</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="programms.html" target="_blank">Программы</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="services.html" target="_blank">Каталог услуг</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="blog.html" target="_blank">Блог</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="blog-single.html" target="_blank">Статья</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="cases.html" target="_blank">Кейсы</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="cases-single.html" target="_blank">Страница кейса</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="contacts.html" target="_blank">Контакты</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="video.html" target="_blank">Видео</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="politic.html" target="_blank">Политика конф.</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__header row">
+                                    <div class="badge-group">
+                                        <div class="badge light">Шаблон:</div>
+                                    </div>
+                                    <svg class="card-simple__icon" viewBox="0 0 24 24" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5855 4.00012L15.3745 4.00027C14.8222 4.0003 14.3745 3.55261 14.3744 3.00032C14.3744 2.44804 14.8221 2.0003 15.3744 2.00027L21 2C21.2652 1.99999 21.5195 2.10534 21.7071 2.29288C21.8946 2.48041 22 2.73478 22 3V8.06261C22 8.61489 21.5523 9.06261 21 9.06261C20.4477 9.06261 20 8.61489 20 8.06261V5.41401L12.1437 13.2693C11.7532 13.6598 11.12 13.6598 10.7295 13.2692C10.339 12.8787 10.3391 12.2455 10.7296 11.855L18.5855 4.00012ZM6.375 4C5.06332 4 4 5.06332 4 6.37498V17.625C4 18.9367 5.06332 20 6.375 20H17.625C18.9367 20 20 18.9367 20 17.625V13.1249C20 12.5727 20.4477 12.1249 21 12.1249C21.5523 12.1249 22 12.5727 22 13.1249V17.625C22 20.0413 20.0412 22 17.625 22H6.375C3.95876 22 2 20.0413 2 17.625V6.37498C2 3.95874 3.95876 2 6.375 2H10.875C11.4273 2 11.875 2.44772 11.875 3C11.875 3.55229 11.4273 4 10.875 4H6.375Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-simple__contact">
+                                    <div class="card-title">
+                                        <!--noindex-->
+                                            <a href="404.html" target="_blank">404</a>
+                                        <!--/noindex-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Типизация -->
+        <section class="section stream" data-stream-top="no">
+            <div class="container">
+                <div class="section__header">
+                    <h5>Типизация разметки</h5>
+                </div>
+                <div class="section__frame white">
+                    <ul class="list-arrow">
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_hero.html" target="_blank">Главные экраны</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_banners.html" target="_blank">Баннеры</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_button.html" target="_blank">Кнопки</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_form.html" target="_blank">Формы</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_list.html" target="_blank">Списки</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_plate.html" target="_blank">Плашки</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_card.html" target="_blank">Карточки</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_article.html" target="_blank">Тело статьи</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_case.html" target="_blank">Тело кейса</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_slider.html" target="_blank">Слайдеры</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-arrow__item">
+                            <div class="list-arrow__title"><h5><a href="_typography.html" target="_blank">Типографика</a></h5></div>
+                            <div class="list-arrow__icon">
+                                <svg viewBox="0 0 26 26" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59001 6.67016L18.9746 6.67016C19.6119 6.67016 20.1285 7.18675 20.1285 7.824L20.1285 18.2086C20.1285 18.8459 19.6119 19.3625 18.9746 19.3625C18.3374 19.3625 17.8208 18.8459 17.8208 18.2086L17.8208 10.6096L7.82409 20.6063L6.19231 18.9745L16.189 8.97785L8.59001 8.97785C7.95276 8.97785 7.43616 8.46126 7.43616 7.824C7.43616 7.18675 7.95276 6.67016 8.59001 6.67016Z" />
+                                </svg>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        @@include('blocks/button-up.html')
+
+        <div class="forweb-modal js-modal">
+            @@include('modals/question.html')
+        </div>
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+</body>
+
+</html>

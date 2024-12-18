@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header.html')
+
+    <main>
+        @@include('blocks/form.html')
+
+        @@include('blocks/button-up.html')
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+    
+    <div class="forweb-modal js-modal">
+        @@include('modals/question.html')
+        @@include('modals/video-popup.html')
+    </div>
+
+    <script src="js/popups.bundle.js"></script>
+</body>
+
+</html>

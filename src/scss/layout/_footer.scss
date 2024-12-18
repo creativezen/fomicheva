@@ -1,0 +1,215 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+.footer {
+    /* прижимаем футре к нижней границе экрана */
+    margin-top: auto;
+    @include size.calculate(padding-top, 480px, 1600px, 40px, 60px);
+    @include size.calculate(padding-bottom, 480px, 1600px, 40px, 60px);
+    background-color: var(--black);
+    @include size.calculate(font-size, 480px, 1600px, 12px, 14px);
+    color: var(--gray);
+
+    
+    *:not([class]):not([class*='menu'] *) {
+        font-size: inherit;
+        color: inherit;
+        letter-spacing: 0.02em;
+    }
+    
+    a:not([class*='button']) {
+        @include mobile.hover {
+            color: var(--white) !important;
+        }
+    }
+    
+    &__nav,
+    &__menu,
+    &__bottom {
+        display: flex;
+    }
+    
+    &__nav {
+        align-items: flex-start;
+        padding-bottom: var(--footer-space);
+        @include size.calculate(gap, 480px, 1600px, 40px, 110px);
+    }
+
+    &__nav + * {
+        @include size.calculate(margin-top, 480px, 1600px, 30px, 60px);
+    }
+    
+    &__menu {
+        --menu-gap: 12px;
+
+        flex: 1;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: var(--menu-gap);
+        max-width: 460px;
+        color: var(--gray);
+        
+        > * {
+            flex: 0 0 auto;
+            width: calc(50% - var(--menu-gap));
+        }
+        
+        li {
+            @include size.calculate(font-size, 480px, 1600px, 16px, 18px);
+            line-height: 1;
+            letter-spacing: 0;
+            transition: var(--fast);
+
+            
+            a {
+                color: inherit;
+            }
+        }
+    }
+
+    &__info {
+        @include size.calculate(font-size, 480px, 1600px, 12px, 14px);
+        
+        flex: 1;
+
+        > * {
+            font-size: inherit;
+            display: block;
+
+            &:not([class*="__logo"]) {
+                & + * {
+                    margin-top: 6px;
+                }
+            }
+        }
+
+        [class*="__logo"] + * {
+            margin-top: 40px;
+        }
+    }
+
+    &__contacts {
+        flex: 0 0 auto;
+        margin-left: auto;
+        @include size.calculate(font-size, 480px, 1600px, 17px, 22px);
+        color: var(--white);
+
+        * {
+            text-align: right;
+        }
+
+        > * + * {
+            margin-top: 8px;
+        }
+
+        a {
+            transition: var(--fast);
+
+            @include mobile.hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: flex-end;
+        flex: auto;
+
+        > * + * {
+            margin-left: auto;
+        }
+    }
+
+    &__soc {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        > * {
+            opacity: 0.2;
+            transition: var(--fast);
+
+            @include mobile.hover {
+                opacity: 1;
+            }
+        }
+
+        a {
+            width: 40px;
+            height: 40px;
+            border-radius: 1000px;
+            background-color: var(--white);
+        }
+    }
+
+    &__logo-forweb {
+        opacity: 0.5;
+
+        @include mobile.hover {
+            opacity: 1;
+        }
+    }
+
+    @media only screen and (max-width: 780px) {
+        &__menu {
+            flex-direction: column;
+            width: 50%;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__nav,
+        &__menu,
+        &__bottom,
+        &__bottom {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            * {
+                text-align: center;
+            }
+        }
+
+        &__menu {
+            width: 100%;
+            gap: 12px;
+        }
+
+        &__info {
+            [class*="__logo"] {
+                & + * {
+                    margin-top: 20px;
+                }
+
+                img {
+                    margin-inline: auto;
+                }
+            }
+        }
+
+        &__contacts {
+            margin-left: unset;
+            
+            * {
+                text-align: center;
+            }
+        }
+        
+        &__bottom {
+            gap: 20px;
+        }
+
+        &__nav {
+            gap: 24px;
+        }
+
+        &__bottom {
+            > * + * {
+                margin-left: 0;
+            }
+        }
+    }
+}

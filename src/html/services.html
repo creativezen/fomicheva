@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header.html')
+
+    <main>
+        <!-- Главный экран  -->
+        <section class="section">
+            <div class="container">
+                <div class="section__hero">
+                    <div class="hero">
+                        <div class="hero__img">
+                            <picture>
+                                <source media="(max-width: 680px)" srcset="img/hero/hero-services-mobile.jpg 2x" type="image/jpg">
+                                <source media="(min-width: 681px)" srcset="img/hero/hero-services-desktop.jpg 2x" type="image/jpg">
+                                <img src="img/hero/hero-services-desktop.jpg" alt="Каталог услуг">
+                            </picture>
+                        </div>
+                        <div class="hero__content">
+                            <h1 class="title">Каталог услуг</h1>
+                            <div class="breadcrumbs">
+                                <nav aria-label="breadcrumbs">
+                                    <p>
+                                        <a href="#">Главная</a>
+                                        <span class="separator"> / </span>
+                                        <span class="last">Услуги</span>
+                                    </p>
+                                </nav>
+                            </div>
+                        </div>      
+                    </div>
+                </div>                
+            </div>
+        </section>
+
+        <!-- Список услуг  -->
+        <section class="section stream">
+            <div class="container setup">
+                <div class="section__frame white">
+                    <div class="section__body">
+                        <ul class="list-number vertical">
+                            <li class="list-number__item">
+                                <div class="list-number__content">
+                                    <div class="list-number__title">
+                                        <h6>Платежи в Китай и другие страны</h6>
+                                    </div>
+                                    <div class="list-number__text">
+                                        <p>Как часто при ведении внешнеэкономической деятельности вы оказывались в ситуации, когда таможенное оформление шло не по плану, когда таможенники задавали «неудобные» вопросы или запрашивали кипу документов? Или вдруг прилетало доначисление платежей, потому что заявленный вами код ТН ВЭД, по мнению ФТС, не отвечает действительности. А может вам просто необходимо оптимизировать расходы?...</p>
+                                    </div>
+                                    <a href="#" class="button accent" target="_blank">
+                                        <span>Подробнее</span>
+                                        <svg viewBox="0 0 19 20" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.77522 4.81452L13.6769 4.81452C14.1617 4.81452 14.5548 5.20759 14.5548 5.69248L14.5548 13.5941C14.5548 14.079 14.1617 14.4721 13.6769 14.4721C13.192 14.4721 12.7989 14.079 12.7989 13.5941L12.7989 7.81206L5.19244 15.4185L3.95082 14.1769L11.5573 6.57044L5.77522 6.57043C5.29034 6.57043 4.89726 6.17736 4.89726 5.69248C4.89726 5.20759 5.29034 4.81452 5.77522 4.81452Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-number__item">
+                                <div class="list-number__content">
+                                    <div class="list-number__title">
+                                        <h6>Таможенная очистка грузов</h6>
+                                    </div>
+                                    <div class="list-number__text">
+                                        <p>Как часто при ведении внешнеэкономической деятельности вы оказывались в ситуации, когда таможенное оформление шло не по плану, когда таможенники задавали «неудобные» вопросы или запрашивали кипу документов? Или вдруг прилетало доначисление платежей, потому что заявленный вами код ТН ВЭД, по мнению ФТС, не отвечает действительности. А может вам просто необходимо оптимизировать расходы?...</p>
+                                    </div>
+                                    <button href="#" class="button accent" data-forweb-path="modal-consulting">
+                                        <span>Получить консультацию</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="list-number__item">
+                                <div class="list-number__content">
+                                    <div class="list-number__title">
+                                        <h6>Логистика</h6>
+                                    </div>
+                                    <div class="list-number__text">
+                                        <p>Как часто при ведении внешнеэкономической деятельности вы оказывались в ситуации, когда таможенное оформление шло не по плану, когда таможенники задавали «неудобные» вопросы или запрашивали кипу документов? Или вдруг прилетало доначисление платежей, потому что заявленный вами код ТН ВЭД, по мнению ФТС, не отвечает действительности. А может вам просто необходимо оптимизировать расходы?...</p>
+                                    </div>
+                                    <a href="#" class="button accent" target="_blank">
+                                        <span>Подробнее</span>
+                                        <svg viewBox="0 0 19 20" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.77522 4.81452L13.6769 4.81452C14.1617 4.81452 14.5548 5.20759 14.5548 5.69248L14.5548 13.5941C14.5548 14.079 14.1617 14.4721 13.6769 14.4721C13.192 14.4721 12.7989 14.079 12.7989 13.5941L12.7989 7.81206L5.19244 15.4185L3.95082 14.1769L11.5573 6.57044L5.77522 6.57043C5.29034 6.57043 4.89726 6.17736 4.89726 5.69248C4.89726 5.20759 5.29034 4.81452 5.77522 4.81452Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-number__item">
+                                <div class="list-number__content">
+                                    <div class="list-number__title">
+                                        <h6>Сертификация</h6>
+                                    </div>
+                                    <div class="list-number__text">
+                                        <p>Как часто при ведении внешнеэкономической деятельности вы оказывались в ситуации, когда таможенное оформление шло не по плану, когда таможенники задавали «неудобные» вопросы или запрашивали кипу документов? Или вдруг прилетало доначисление платежей, потому что заявленный вами код ТН ВЭД, по мнению ФТС, не отвечает действительности. А может вам просто необходимо оптимизировать расходы?...</p>
+                                    </div>
+                                    <button href="#" class="button accent" data-forweb-path="modal-consulting">
+                                        <span>Получить консультацию</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="list-number__item">
+                                <div class="list-number__content">
+                                    <div class="list-number__title">
+                                        <h6>Открытие зарубежного торгового дома</h6>
+                                    </div>
+                                    <div class="list-number__text">
+                                        <p>Как часто при ведении внешнеэкономической деятельности вы оказывались в ситуации, когда таможенное оформление шло не по плану, когда таможенники задавали «неудобные» вопросы или запрашивали кипу документов? Или вдруг прилетало доначисление платежей, потому что заявленный вами код ТН ВЭД, по мнению ФТС, не отвечает действительности. А может вам просто необходимо оптимизировать расходы?...</p>
+                                    </div>
+                                    <a href="#" class="button accent" target="_blank">
+                                        <span>Подробнее</span>
+                                        <svg viewBox="0 0 19 20" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.77522 4.81452L13.6769 4.81452C14.1617 4.81452 14.5548 5.20759 14.5548 5.69248L14.5548 13.5941C14.5548 14.079 14.1617 14.4721 13.6769 14.4721C13.192 14.4721 12.7989 14.079 12.7989 13.5941L12.7989 7.81206L5.19244 15.4185L3.95082 14.1769L11.5573 6.57044L5.77522 6.57043C5.29034 6.57043 4.89726 6.17736 4.89726 5.69248C4.89726 5.20759 5.29034 4.81452 5.77522 4.81452Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="list-number__item">
+                                <div class="list-number__content">
+                                    <div class="list-number__title">
+                                        <h6>Digital VED</h6>
+                                    </div>
+                                    <div class="list-number__text">
+                                        <p>Как часто при ведении внешнеэкономической деятельности вы оказывались в ситуации, когда таможенное оформление шло не по плану, когда таможенники задавали «неудобные» вопросы или запрашивали кипу документов? Или вдруг прилетало доначисление платежей, потому что заявленный вами код ТН ВЭД, по мнению ФТС, не отвечает действительности. А может вам просто необходимо оптимизировать расходы?...</p>
+                                    </div>
+                                    <a href="#" class="button accent" target="_blank">
+                                        <span>Подробнее</span>
+                                        <svg viewBox="0 0 19 20" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.77522 4.81452L13.6769 4.81452C14.1617 4.81452 14.5548 5.20759 14.5548 5.69248L14.5548 13.5941C14.5548 14.079 14.1617 14.4721 13.6769 14.4721C13.192 14.4721 12.7989 14.079 12.7989 13.5941L12.7989 7.81206L5.19244 15.4185L3.95082 14.1769L11.5573 6.57044L5.77522 6.57043C5.29034 6.57043 4.89726 6.17736 4.89726 5.69248C4.89726 5.20759 5.29034 4.81452 5.77522 4.81452Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @@include('blocks/button-up.html')
+
+        <div class="forweb-modal js-modal">
+            @@include('modals/question.html')
+            @@include('modals/consulting.html')
+            @@include('modals/submit-success.html')
+            @@include('modals/submit-error.html')
+        </div>
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+</body>
+
+</html>

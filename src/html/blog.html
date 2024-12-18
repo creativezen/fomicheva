@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header.html')
+
+    <main>
+        <!-- Главный экран  -->
+        <section class="section">
+            <div class="container">
+                <div class="section__hero">
+                    <div class="hero">
+                        <div class="hero__img">
+                            <picture>
+                                <source media="(max-width: 680px)" srcset="img/hero/hero-blog-mobile.jpg 2x" type="image/jpg">
+                                <source media="(min-width: 681px)" srcset="img/hero/hero-blog-desktop.jpg 2x" type="image/jpg">
+                                <img src="img/hero/hero-blog-desktop.jpg" alt="Блог">
+                            </picture>
+                        </div>
+                        <div class="hero__content">
+                            <h1 class="title">Блог</h1>
+                            <div class="breadcrumbs">
+                                <nav aria-label="breadcrumbs">
+                                    <p>
+                                        <a href="#">Главная</a>
+                                        <span class="separator"> / </span>
+                                        <span class="last">Блог</span>
+                                    </p>
+                                </nav>
+                            </div>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Фильтр  -->
+        <section class="section">
+            <div class="container">
+                <div class="section__body">
+                    <div class="button-group centered">
+                        <button href="#" class="button accent medium zero active js-blog-filter">Все статьи</button>
+                        <button href="#" class="button accent medium zero js-blog-filter">ВЭД</button>
+                        <button href="#" class="button accent medium zero js-blog-filter">СТМ</button>
+                        <button href="#" class="button accent medium zero js-blog-filter">Название категории</button>
+                        <button href="#" class="button accent medium zero js-blog-filter">Название категории</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Список постов  -->
+        <section class="section offset">
+            <div class="container setup">
+                <div class="section__body">
+                    <div class="grid-group">
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__img">
+                                    <img loading="lazy" src="img/card/card-post-img-01.jpg" alt="Формы и виды внешнеэкономической деятельности">
+                                </div>
+                                <div class="card-simple__header">
+                                    <div class="badge-group">
+                                        <div class="badge gray">ВЭД</div>
+                                    </div>
+                                </div>
+                                <div class="card-simple__body">
+                                    <h5 class="card-title">
+                                        <a href="#">Формы и виды внешнеэкономической деятельности</a>
+                                    </h5>
+                                </div>
+                                <div class="card-simple__footer">
+                                    <a href="#">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__img">
+                                    <img loading="lazy" src="img/card/card-post-img-02.jpg" alt="Саморазвитие: как раскрыть свой потенциал и изменить жизнь">
+                                </div>
+                                <div class="card-simple__header">
+                                    <div class="badge-group">
+                                        <div class="badge gray">Личностный рост</div>
+                                    </div>
+                                </div>
+                                <div class="card-simple__body">
+                                    <h5 class="card-title">
+                                        <a href="#">Саморазвитие: как раскрыть свой потенциал и изменить жизнь</a>
+                                    </h5>
+                                </div>
+                                <div class="card-simple__footer">
+                                    <a href="#">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__img">
+                                    <img loading="lazy" src="img/card/card-case-img-01x2.jpg" alt="Формы и виды внешнеэкономической деятельности">
+                                </div>
+                                <div class="card-simple__header">
+                                    <div class="badge-group">
+                                        <div class="badge gray">ВЭД</div>
+                                    </div>
+                                </div>
+                                <div class="card-simple__body">
+                                    <h5 class="card-title">
+                                        <a href="#">Формы и виды внешнеэкономической деятельности</a>
+                                    </h5>
+                                </div>
+                                <div class="card-simple__footer">
+                                    <a href="#">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__img">
+                                    <img loading="lazy" src="img/card/card-portrait-img-01x2.jpg" alt="Саморазвитие: как раскрыть свой потенциал и изменить жизнь">
+                                </div>
+                                <div class="card-simple__header">
+                                    <div class="badge-group">
+                                        <div class="badge gray">Личностный рост</div>
+                                    </div>
+                                </div>
+                                <div class="card-simple__body">
+                                    <h5 class="card-title">
+                                        <a href="#">Саморазвитие: как раскрыть свой потенциал и изменить жизнь</a>
+                                    </h5>
+                                </div>
+                                <div class="card-simple__footer">
+                                    <a href="#">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__img">
+                                    <img loading="lazy" src="img/card/card-post-img-01.jpg" alt="Формы и виды внешнеэкономической деятельности">
+                                </div>
+                                <div class="card-simple__header">
+                                    <div class="badge-group">
+                                        <div class="badge gray">ВЭД</div>
+                                    </div>
+                                </div>
+                                <div class="card-simple__body">
+                                    <h5 class="card-title">
+                                        <a href="#">Формы и виды внешнеэкономической деятельности</a>
+                                    </h5>
+                                </div>
+                                <div class="card-simple__footer">
+                                    <a href="#">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-child" data-grid="4">
+                            <div class="card-simple white">
+                                <div class="card-simple__img">
+                                    <img loading="lazy" src="img/card/card-post-img-02.jpg" alt="Саморазвитие: как раскрыть свой потенциал и изменить жизнь">
+                                </div>
+                                <div class="card-simple__header">
+                                    <div class="badge-group">
+                                        <div class="badge gray">Личностный рост</div>
+                                    </div>
+                                </div>
+                                <div class="card-simple__body">
+                                    <h5 class="card-title">
+                                        <a href="#">Саморазвитие: как раскрыть свой потенциал и изменить жизнь</a>
+                                    </h5>
+                                </div>
+                                <div class="card-simple__footer">
+                                    <a href="#">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__footer">
+                    <button href="#" class="button accent zero block js-loadmore">Показать ещё</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Баннер -->
+        <section class="section stream" data-stream-bottom="no">
+            <div class="container setup">
+                <div class="section__body">
+                    <div class="block-offer">
+                        <div class="background-block-offer"></div>
+                        <div class="block-offer__content">
+                            <div class="block-offer__body">
+                                <h5 class="block-offer__title">Выгодное предложение оффер 01</h5>
+                                <div class="block-offer__text">
+                                    <p>За время обучения вы узнаете, как работать с зарубежными поставщиками напрямую по безопасным "белым" схемам, и повысите маржинальность вашего бизнеса</p>
+                                </div>
+                            </div>
+                            <div class="block-offer__img">
+                                <img loading="lazy" src="img/blocks/img-block-offer-desktop-01.png" alt="Выгодное предложение оффер 01">
+                            </div>
+                            <div class="block-offer__cta">
+                                <a href="#" class="button white">Оставить заявку</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section class="section stream">
+            <div class="container setup">
+                <div class="section__body">
+                    <div class="section__body">
+                        <div class="block-contact">
+                            <div class="background-block-contact"></div>
+                            <div class="block-contact__content">
+                                <div class="block-contact__text">
+                                    <h5 class="block-contact__title">Если у вас остались вопросы</h5>
+                                    <div class="block-contact__paragraph">
+                                        <p>За время обучения вы узнаете, как работать с зарубежными поставщиками напрямую по безопасным "белым" схемам, и повысите маржинальность вашего бизнеса.</p>
+                                    </div>
+                                </div>
+                                <div class="block-contact__form">
+                                    <form class="form js-form" data-sitekey="" data-target="modal-question">
+                                        <input type="hidden" name="recaptcha_response" class="recaptcha-response" value="">
+                                        <input type="hidden" name="form-name" value="Если у вас остались вопросы">
+                                        <fieldset class="form__body">
+                                            <div class="form__item">
+                                                <input class="input input-name" type="text" name="name" placeholder="Укажите ваше имя" required="">
+                                            <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                            <div class="form__item">
+                                                <input class="input input-tel" type="tel" name="phone" placeholder="+7(ХХХ) ХХХ-ХХ-ХХ" required="" inputmode="text">
+                                            </div>
+                                            <div class="form__item">
+                                                <input class="input input-email" type="email" name="email" placeholder="Ваш email" required="">
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="form__footer">
+                                            <label class="label label--agree" for="agree-begin-contact">
+                                                <input class="checkbox input-agree" id="agree-begin-contact" type="checkbox" required="">
+                                                <span>Даю согласие на обработку и использование персональных данных согласно 152-ФЗ, с <a href="https://" target="_blank">правилами политики обработки персональных данных</a> ознакомлен</span>
+                                            </label>
+                                            <button type="submit" class="button accent">Задать вопрос</button>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @@include('blocks/button-up.html')
+
+        <div class="forweb-modal js-modal">
+            @@include('modals/question.html')
+            @@include('modals/submit-success.html')
+            @@include('modals/submit-error.html')
+        </div>
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+    @@include('blocks/loading.html')
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+@use '../mixins/fluid-size' as size;
+
+.aside {
+
+    &__img {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-medium);
+        height: 100%;
+
+        img {
+            display: block;
+            max-width: none;
+            width: 101%;
+            height: inherit;
+            border-radius: inherit;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--blue-accent);
+        opacity: 0.2;
+    }
+	/* Закрепляем блок в сайдбаре при скроле */
+	[data-position='sticky'] {
+	}
+
+    @media only screen and (max-width: 680px) {
+        &__img {
+            max-height: 360px;
+        }
+    }
+}
+
+.aside-item + .aside-item {
+    margin-top: var(--offset-default);
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('blocks/head.html')
+
+<body>
+    @@include('blocks/header.html')
+
+    <main>
+        @@include('blocks/card.html')
+
+        @@include('blocks/button-up.html')
+    </main>
+
+    @@include('blocks/footer.html')
+    @@include('blocks/mobile-nav.html')
+    
+    <div class="forweb-modal js-modal">
+        @@include('modals/question.html')
+        @@include('modals/submit-success.html')
+        @@include('modals/submit-error.html')
+        @@include('modals/text-popup.html')
+        @@include('modals/video-popup.html')
+        @@include('modals/img-popup.html')
+        @@include('modals/tafir-group.html')
+        @@include('modals/tafir-individual.html')
+    </div>
+
+    <script src="js/popups.bundle.js"></script>
+</body>
+
+</html>

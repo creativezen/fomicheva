@@ -1,0 +1,207 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+.header {
+	--header-icon-size: 42px;
+	--menu-space: 10px;
+	--header-spacing: 12px;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+	background-color: transparent;
+    z-index: 200;
+
+    &__content,
+    &__logo,
+    &__nav,
+    &__buttons,
+    &__menu {
+        display: flex;
+        align-items: center;
+    }
+    
+    &__content {
+        height: var(--header-height);
+        @include size.calculate(padding-inline, 480px, 1600px, 12px, 40px);
+        background-color: var(--white);
+        border-bottom-left-radius: var(--radius-large);
+        border-bottom-right-radius: var(--radius-large);
+    }
+
+	&__logo {
+		flex-shrink: 0;
+        @include size.calculate(width, 680px, 1600px, 180px, 204px);
+        height: auto;
+	}
+
+
+	&__nav {
+        flex: auto;
+        justify-content: center;
+        margin-left: auto;
+        gap: var(--header-spacing);
+	}
+
+    &__buttons {
+        display: flex;
+        margin-left: auto;
+
+        > * + * {
+            margin-left: 8px;
+        }
+    }
+    
+	&__menu {
+        height: var(--nav-height);
+		justify-content: center;
+        @include size.calculate(gap, 1280px, 1600px, 10px, 16px);
+        padding-inline: 16px;
+        border: 1px solid var(--blue-border);
+        border-radius: var(--radius-small);
+
+		.menu-item {
+            position: relative;
+            display: inline-flex;
+            height: 36px;
+            border-radius: 1000px;
+            @include size.calculate(padding-inline, 1080px, 1600px, 8px, 12px);
+            @include size.calculate(font-size, 1280px, 1600px, 16px, 18px);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.02em;
+			color: var(--black);
+			transition: var(--fast);
+
+            /* Корректируем позицию выпадающего меню относительно правой границы экрана */
+            &:last-child {
+                .sub-menu {
+                    right: -40px;
+                }
+            }
+
+            @include mobile.hover {
+                background-color: var(--gray-bg);
+
+                .sub-menu {
+                    opacity: 1;
+                    transform: translateY(35px);
+                    visibility: visible;
+                    pointer-events: all;
+                }
+            }
+
+			a,
+            span {
+				height: 100%;
+				padding-top: 11px;
+				padding-bottom: 11px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+                gap: 12px;
+                line-height: 0.8;
+				color: inherit;
+                cursor: pointer;
+			}
+
+            &.current_page_item {
+                background-color: var(--black) !important;
+                color: var(--white);
+                cursor: text;
+                pointer-events: none;
+
+                * {
+                    cursor: inherit;
+                }
+            }
+		}
+
+        .sub-menu {
+            position: absolute;
+            padding-top: 12px;
+            width: 200px;
+            opacity: 0;
+            transform: translateY(10%);
+            transition: var(--fast);
+            visibility: hidden;
+            pointer-events: none;
+            box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.14);
+
+            .sub-menu-item {
+                width: 100%;
+                background-color: var(--white);
+                border-radius: 0;
+                padding: 0;
+
+                a {
+                    width: inherit;
+                    padding: 14px;
+                    justify-content: flex-start;
+
+                    @include mobile.hover {
+                        background-color: var(--gray-bg);
+                    }
+                }
+            }
+
+            li + li {
+                margin-left: auto;
+            }
+        }
+	}
+
+    & + * {
+        margin-top: var(--offset-default);
+    }
+
+    @media only screen and (min-width: 1281px) {
+        /* не показываем бургер до точки 1080 */
+        .burger {
+            position: absolute;
+            top: -1000%;
+            left: -1000%;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            clip-path: inset(100%);
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+        }
+    }
+
+    /* прячем навигацию с точки 1080 */
+    @media only screen and (max-width: 1280px) {
+        &__menu {
+            position: absolute;
+            top: -1000%;
+            left: -1000%;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            clip-path: inset(100%);
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+        }
+    }
+
+	@media only screen and (max-width: 680px) {
+        &__logo {
+            @include size.calculate(width, 380px, 680px, 80px, 100px);
+        }
+
+        &__content {
+            border-bottom-left-radius: var(--radius-medium);
+            border-bottom-right-radius: var(--radius-medium);
+        }
+	}    
+}

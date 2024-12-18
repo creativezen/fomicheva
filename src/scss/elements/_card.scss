@@ -1,0 +1,1343 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+/* properties for card */
+.card-properties {
+    --card-space: 30px;
+    --card-large-space: 40px;
+    --card-medium-space: 14px;
+    --card-small-space: 8px;
+	--card-radius: var(--radius-large);
+	--card-img-radius: var(--radius-medium);
+    --card-svg-size: 90px;
+    
+    position: relative;
+    padding: var(--card-space);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: var(--card-radius);
+    transition: var(--fast);
+    overflow: hidden;
+
+    /* Смещение по оси Y и добавление тени при наведении */
+    @include mobile.hover {
+        &:not(.no-hover) {
+            transform: translateY(-5px);
+            box-shadow: 0px 13px 39px -16px rgba(34, 60, 80, 0.2);
+        }
+    }
+
+    /* определяем для всех ложенных абзацев наследование цвета текста от карточки */
+    [class*='__body'],
+    [class*='__content'] {
+        color: var(--black-green);
+
+        *:not([class]) {
+            color: inherit;
+        }
+
+        &.stratch {
+            height: 100%;
+        }
+    }
+
+    [class*='__img'],
+    [class*='__photo'] {
+        position: relative;
+        flex-shrink: 0;
+        /* height: auto; */
+        border-radius: var(--card-img-radius);
+        overflow: hidden;
+
+        *:not([class]) {
+            border-radius: inherit;
+        }
+        
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: 50%;
+        }
+
+        &.brightness img {
+            filter: brightness(0.8);
+        }
+    }
+
+    [class*='badge'] + [class*='title'] {
+        margin-top: var(--card-space);
+    }
+
+    a:not([class*="button"]):not(.card-title a),
+    [role="button"] {
+        color: var(--green);
+        font-weight: 500;
+        text-decoration: underline;
+        transition: var(--fast);
+
+        @include mobile.hover {
+            color: var(--black);
+        }
+    }
+    
+    /* заполняющая высота */
+    &.auto {
+        height: 100%
+    }
+
+    /* Белая карточка */
+    &.white {
+        background-color: var(--white);
+    }
+
+    /* Бледно-серая карточка */
+    &.gray {
+        background-color: var(--gray-light);
+    }
+
+    &.light-gray {
+        background-color: var(--light-gray);
+
+        @include mobile.hover {
+            background-color: var(--white);
+
+            .card-title {
+                color: var(--green);
+            }
+        }
+    }
+
+    &.silver {
+        background-color: var(--gray-silver);
+    }
+
+    /* Темная карточка */
+    &.dark {
+        background-color: var(--black-dark);
+
+        /* Переопределяем для всех ложенных абзацев наследование цвета текста от карточки */
+        [class*='__body'],
+        [class*='__content'] {
+            color: var(--gray-light);
+        }
+    }
+
+    /* Темно-зеленая */
+    &.gray-dark {
+        background-color: var(--gray-dark);
+
+        /* Переопределяем для всех ложенных абзацев наследование цвета текста от карточки */
+        [class*='__body'],
+        [class*='__content'] {
+            color: var(--gray-silver);
+        }
+    }
+
+    &.large {
+        padding: var(--card-large-space);
+    }
+
+    @media only screen and (max-width: 1380px) {
+        --card-space: 24px;
+    }
+    
+    @media only screen and (max-width: 680px) {
+        --card-space: 18px;
+        --card-large-space: 22px;
+        --card-medium-space: 12px;
+        --card-small-space: 6px;
+        --card-radius: var(--radius-medium);
+        --card-img-radius: var(--radius-small);
+        --card-svg-size: 60px;
+
+        gap: 14px;
+    }
+
+    @media only screen and (max-width: 480px) {
+        [class*='__footer'] {
+            .button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Заголовки карточек */
+.card-title {
+    font-family: var(--font-title);
+    font-weight: 400;
+    @include size.calculate(font-size, 480px, 1600px, 20px, 23px);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--black);
+
+    /* Обрезаем текст по кол-ву строк 4 */
+    display: -webkit-box;
+    display: -moz-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    overflow: hidden;
+
+    @include mobile.hover {
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    * {
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
+        color: inherit;
+    }
+    
+    /* Отталкиваем нижеследующий элемент */
+    & + *:not([class*='button']) {
+        display: block;
+        @include size.calculate(margin-top, 480px, 1600px, 12px, 14px);
+    }
+
+    &.medium {
+        @include size.calculate(font-size, 480px, 1600px, 22px, 32px);
+
+        /* Отталкиваем нижеследующий элемент */
+        & + * {
+            @include size.calculate(margin-top, 480px, 1600px, 18px, 24px);
+        }
+    }
+    
+    &.large {
+        line-height: 1.1;
+
+        /* Отталкиваем нижеследующий элемент */
+        & + * {
+            @include size.calculate(margin-top, 480px, 1600px, 22px, 30px);
+        }
+    }
+
+    &.absolute-link {
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    }
+}
+
+/* Тонирующий слой с кнопкой */
+.card-overlay {
+    --overlay-icon-size: 68px;
+    --overlay-icon-radius: 8px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(24, 24, 24, 0);
+    cursor: pointer;
+    transition: var(--fast);
+    
+    @include mobile.hover {
+        background-color: rgba(24, 24, 24, 0.6);
+
+        [class*='__icon'] {
+            background-color: rgba(1, 13, 7, 0);
+            backdrop-filter: unset;
+
+            svg {
+                fill: var(--green-hover);
+            }
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--overlay-icon-size);
+        width: var(--overlay-icon-size);
+        border-radius: var(--overlay-icon-radius);
+        background-color: rgba(1, 13, 7, 0.3);
+        backdrop-filter: blur(10px);
+        transition: var(--fast);
+
+        svg {
+            fill: var(--white);
+            transition: var(--fast);
+        }
+
+        &.mini {
+            background-color: transparent;
+            backdrop-filter: unset;
+        }
+    }
+
+    &__play {
+        width: 32px;
+        height: 29px;
+    }
+
+    &__zoom {
+        width: 60%;
+        height: 60%;
+    }
+
+    @media only screen and (max-width: 680px) {
+        --overlay-icon-size: 42px;
+        --overlay-icon-radius: 4px;
+
+        &__play {
+            width: 22px;
+            height: 19px;
+        }
+
+        &__zoom {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+/* Карточка стандартная */
+.card-simple {
+    @extend .card-properties;
+
+    @include mobile.hover {
+        [class*="__icon"] {
+            fill: var(--green-hover);
+        }
+    }
+
+    .grid-child & {
+        height: 100%;
+    }
+
+    &__header,
+    &__body {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__body {
+        &.top-auto {
+            margin-top: auto;
+        }
+    }
+
+    &__header {
+        &.row {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        fill: var(--gray-silver);
+
+        .row & {
+            margin-left: auto;
+        }
+    }
+
+    &__svg {
+        width: var(--card-svg-size);
+        height: var(--card-svg-size);
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__img {
+        flex-shrink: 0;
+        flex: 0 0 auto;
+        width: 100%;
+        @include size.calculate(height, 480px, 1600px, 180px, 280px);
+        max-height: 280px;
+    }
+
+    &__book {
+        @include size.calculate(width, 480px, 1600px, 270px, 350px);
+        @include size.calculate(height, 480px, 1600px, 250px, 330px);
+        margin-inline: auto;
+        border-radius: var(--radius-medium);
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: 50%;
+            border-radius: inherit;
+        }
+    }
+
+    &__contact {
+        @include size.calculate(font-size, 480px, 1600px, 12px, 14px);
+
+        *:not([class]) {
+            font-size: inherit;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+    }
+
+    &__video {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        @include size.calculate(min-height, 480px, 1600px, 200px, 350px);
+
+        > * + * {
+            margin-top: auto;
+        }
+
+        & + .card-overlay {
+            z-index: 1;
+        }
+    }
+
+    &__footer {
+        margin-top: auto;
+        
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    &.bordered {
+        border: 1px solid var(--gray-silver);
+    }
+}
+
+/* Карточка программы */
+.card-programm {
+    @extend .card-properties;
+    gap: var(--card-medium-space);
+
+    &__content {
+        flex: auto;
+    }
+
+    &__content,
+    &__plate {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__body {
+        flex: auto;
+        display: flex;
+        gap: var(--card-space);
+        padding-top: var(--card-medium-space);
+        padding-bottom: var(--card-medium-space);
+        border-top: 1px solid var(--gray-silver);
+        border-bottom: 1px solid var(--gray-silver);
+    }
+
+    &__plate {
+        flex-shrink: 0;
+        width: 50%;
+        max-width: 260px;
+    }
+
+    &__footer {
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__body {
+            flex-direction: column;
+            padding: 0;
+            border: 0;
+        }
+
+        &__plate {
+            max-width: none;
+            width: 100%;
+        }
+    }
+}
+
+/* Карточка преподавателя */
+.card-mentor {
+    @extend .card-properties;
+
+    --card-mentor-img-height: clamp(200px, 17em, 340px);
+
+    padding: 2px;
+    padding-bottom: var(--card-space);
+
+    &__photo {
+        width: 100%;
+        height: var(--card-mentor-img-height) !important;
+        border-radius: var(--card-radius);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50%;
+        }
+    }
+
+    &__header,
+    &__body,
+    &__footer {
+        padding-inline: var(--card-space);
+    }
+
+    &__header,
+    &__body {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__body {
+        flex: auto;
+        font-family: var(--font-text);
+        @include size.calculate(font-size, 480px, 1600px, 13px, 16px);
+        color: var(--gray) !important;
+        // Обрезаем текст по кол-ву строк
+        display: -webkit-box;
+        display: -moz-box;
+        line-clamp: 8;
+        -webkit-line-clamp: 8;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        overflow: hidden;
+        
+        *:not([class]) {
+            font-family: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+            color: inherit;
+            
+            strong,
+            b {
+                font-weight: 500;
+            }
+        }
+        
+        /* Отталкиваем друг от друга текстовые элементы в вертикальном потоке */
+        > *:not(.card-title) + *,
+        li + li {
+            margin-top: 10px !important;
+        }
+
+        img {
+            display: none;
+        }
+    }
+    
+    &__footer {
+        [role="button"]::after,
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+
+            @include mobile.hover {
+                color: var(--black);
+            }
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            /* Отталкиваем друг от друга текстовые элементы в вертикальном потоке */
+            > *:not(.card-title) + *,
+            li + li {
+                margin-top: 8px !important;
+            }
+        }
+    }
+}
+
+/* Карточка кейса */
+.card-case {
+    --card-case-photo: 120px;
+
+    @extend .card-properties;
+
+    .grid-child & {
+        height: 100%;
+    }
+
+    [class*="title"],
+    &__body {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__body {
+        height: 100%;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: var(--card-space);
+    }
+
+    &__name {
+        flex: auto;
+        line-height: 1.2;
+
+        [class*="title"] {
+            hyphens: auto;
+            line-height: inherit;
+        }
+    }
+
+    &__photo {
+        width: var(--card-case-photo);
+        height: var(--card-case-photo) !important;
+        border-radius: 50%;
+    }
+
+    &__body {
+        > * + * {
+            margin-top: var(--card-space);
+        }
+    }
+
+    &__footer {
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        --card-case-photo: 100px;
+
+        .plate-group.row {
+            flex-direction: column;
+        }
+    }
+}
+
+/* Карточка видео */
+.card-video {
+    @extend .card-properties;
+
+    --card-video-img-height: clamp(200px, 3em, 340px);
+
+    &__img {
+        flex: auto;
+        height: var(--card-video-img-height) !important;
+    }
+}
+
+/* Карточка список */
+.card-list {
+    @extend .card-properties;
+
+    --card-list-img-height: clamp(80px, 5em, 120px);
+    
+    &__header {
+        position: relative;
+
+        [class*='title'] {
+            .gray-dark &,
+            .dark & {
+                color: var(--white);
+            }
+
+            @include mobile.hover {
+                & + [class*="button"] {
+                    background-color: var(--green-hover);
+                }
+            }
+        }
+
+        &.flex-row {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--card-medium-space);
+
+            [class*='title'] {
+                flex: auto;
+            }
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    &__body {
+        margin-top: auto;
+        @include size.calculate(font-size, 480px, 1600px, 14px, 22px);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: var(--card-space);
+        border-top: 1px solid var(--gray);
+        padding-top: var(--card-medium-space);
+        padding-bottom: var(--card-medium-space);
+
+        > *:not([class*="__img"]) {
+            flex: auto;
+        }
+
+        .dark & {
+            border-color: var(--green-dark);
+        }
+    }
+
+    &__img {
+        position: relative;
+        @include size.calculate(width, 480px, 1600px, 80px, 220px);
+        height: var(--card-list-img-height) !important;
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__item {
+            flex-direction: row-reverse;
+        }
+
+        /* &__img {
+            width: 80px;
+        } */
+    }
+}
+
+/* Картока отзывов */
+.card-feedback {
+    @extend .card-properties;
+
+    --card-feedback-img-height: clamp(120px, 13em, 220px);
+
+    border: 1px solid var(--green-dark);
+
+    &__header {
+        > *:not([class*='title']) {
+            /* Обрезаем текст по кол-ву строк */
+            display: -webkit-box;
+            display: -moz-box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            -moz-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .dark & {
+            [class*='title'] {
+                color: var(--white);
+            }
+        }
+    }
+
+    &__body {
+        flex: auto;
+        max-height: 170px;
+        overflow: hidden;
+
+        /* Скрываем аватарку и имя пользователя на превью в карточке */
+        img,
+        .card-title {
+            display: none;
+        }
+
+    }
+
+    &__footer {
+        margin-top: auto;
+    }
+
+    &__img {
+        flex: auto;
+        height: var(--card-feedback-img-height) !important;
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__body {
+            height: 120px;
+        }
+    }
+}
+
+/* Карточка документа */
+.card-doc {
+    @extend .card-properties;
+
+    --card-doc-img-height: clamp(340px, 27em, 480px);
+
+    padding: 8px;
+    /* height: 100%; */
+    @include size.calculate(height, 480px, 1600px, 400px, 500px);
+
+    &__img {
+        width: 100%;
+        overflow: hidden;
+        border-radius: var(--radius-medium);
+        height: 100% !important;
+    }
+
+    @media only screen and (max-width: 680px) {
+        padding: 4px;
+        max-width: 200px;
+    }
+}
+
+/* Карточка партенра */
+.card-logo {
+    @extend .card-properties;
+
+    padding: 0;
+    width: 375px;
+    height: 140px;
+    overflow: hidden;
+
+    &__img {
+        height: 100% !important;
+        width: 100%;
+
+        img {
+            object-fit: contain !important;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        width: 214px;
+        height: 80px;
+    }
+}
+
+/* Карточка портрет */
+.card-portrait {
+    @extend .card-properties;
+    padding: 0;
+
+    &__photo {
+        flex: auto;
+    }
+}
+
+/* Карточка иммиджевая */
+.card-colored {
+    @extend .card-properties;
+
+    --card-colored-icon-size: 60px;
+
+    border: 1px solid var(--gray-silver);
+
+    .grid-child &:not(.no-auto) {
+        height: 100%;
+    }
+
+    &__header {
+        display: flex;
+
+        > * + * {
+            margin-left: auto;
+        }
+    }
+
+    &__tagline {
+        @include size.calculate(font-size, 480px, 1600px, 14px, 16px);
+    }
+
+    &__title,
+    &__tagline {
+        color: var(--green-dark);
+
+        .green &,
+        .dark & {
+            color: var(--white);
+        }
+
+        * {
+            color: inherit;
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+        @include size.calculate(font-size, 480px, 1600px, 38px, 48px);
+
+        * {
+            font-weight: inherit;
+            font-size: inherit;
+        }
+    }
+
+    &__icon {
+        width: var(--card-colored-icon-size);
+        height: var(--card-colored-icon-size);
+    }
+
+    &__body {
+        padding-top: var(--card-medium-space);
+        margin-top: auto;
+        @include size.calculate(font-size, 480px, 1600px, 16px, 22px);
+
+        .green &,
+        .dark & {
+            color: var(--white);
+        }
+
+        * {
+            font-size: inherit;
+        }
+    }
+
+    &.green {
+        background-color: var(--green-dark);
+    }
+
+    &.dark {
+        background-color: var(--gray-dark);
+    }
+
+    @media only screen and (max-width: 680px) {
+        --card-colored-icon-size: 50px;
+    }
+}
+
+/* Карточки в сайдбар */
+.card-aside {
+    @extend .card-properties;
+
+    background-color: var(--white);
+
+    &__info {
+        padding: var(--card-medium-space);
+        border-radius: var(--radius-small);
+        background-color: var(--light-gray);
+        @include size.calculate(font-size, 480px, 1600px, 13px, 16px);
+
+        * {
+            font-size: inherit;
+        }
+
+        strong,b {
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        > *:not(p) + * {
+            margin-top: var(--card-medium-space);
+        }
+
+        p + p {
+            margin-top: 6px;
+        }
+
+    }
+
+    &__img {
+        flex: 0 0 auto;
+        max-height: 300px;
+    }
+
+    &__logo {
+        @include size.calculate(width, 480px, 1600px, 70px, 100px);
+        @include size.calculate(height, 480px, 1600px, 70px, 100px);
+        border-radius: var(--radius-small);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50%;
+            border-radius: inherit;
+        }
+    }
+
+    &__list {
+        > li + * {
+            margin-top: var(--card-small-space);
+        }
+
+        li {
+            a {
+                font-weight: 400 !important;
+                color: var(--gray) !important;
+
+                @include mobile.hover {
+                    color: var(--green) !important;
+                }
+            }
+        }
+    }
+}
+
+/* Карточка шахматная  */
+.card-chesse {
+
+    &__content {
+        padding: var(--offset-default);
+        display: flex;
+        gap: var(--offset-default);
+        backdrop-filter: blur(7px);
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: var(--radius-large);
+        
+        > * {
+            flex: 50%;
+        }
+
+        &:nth-child(odd) {
+            [class*="__text"] {
+                background-color: var(--beige-sky);
+            }
+        }
+
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+            
+            [class*="__text"] {
+                background-color: var(--gray-sky);
+            }
+        }
+
+        .white & {
+            background-color: var(--white);
+        }
+    }
+
+    &__content + &__content {
+        margin-top: var(--offset-default);
+    }
+
+    &__img {
+        @include size.calculate(min-height, 780px, 1460px, 300px, 440px);
+        border-radius: var(--radius-medium);
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: 50%;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include size.calculate(min-height, 780px, 1600px, 300px, 440px);
+        padding: var(--offset-default);
+        color: var(--gray-silver);
+
+        * {
+            color: inherit;
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        > *:not([class*="__title"]) + * {
+            margin-top: 16px;
+        }
+
+        .white & {
+            color: var(--black);
+        }
+    }
+
+    &__title {
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 22px, 28px);
+        text-transform: uppercase;
+        color: var(--white);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            text-transform: inherit;
+            color: inherit;
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        & + * {
+            margin-top: auto;
+            padding-top: var(--title-space-h5);
+        }
+
+        .white & {
+            color: var(--black);
+        }
+    }
+
+    @media only screen and (max-width: 780px) {
+        &__content {
+            &:nth-child(even),
+            &:nth-child(odd) {
+                flex-direction: column;
+            }
+
+            > * {
+                flex: auto;
+            }
+        }
+
+        &__text {
+            min-height: auto;
+        }
+
+        &__img {
+            min-height: auto;
+            @include size.calculate(height, 480px, 780px, 300px, 390px);
+        }
+    }
+}
+
+/* Карточка услуга */
+.card-service {
+    @extend .card-properties;
+
+    gap: var(--card-large-space);
+
+    .grid-child & {
+        height: 100%;
+    }
+
+    &__header {
+        display: flex;
+        gap: var(--card-large-space);
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 24px, 38px);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        > * + * {
+            margin-top: unset !important;
+            margin-left: auto;
+        }
+    }
+
+    &__logo {
+        flex-shrink: 0;
+        flex: 0 0 auto;
+        width: 140px;
+        max-height: 140px;
+        overflow: hidden;
+        text-align: right;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: 50%;
+        }
+    }
+
+    &__footer {
+        margin-top: auto;
+
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__header {
+            flex-direction: column;
+
+            > * + * {
+                margin-left: unset;
+            }
+        }
+
+        &__logo {
+            text-align: left;
+        }
+    }
+}
+
+/* Карточка биография */
+.card-bio {
+    @extend .card-properties;
+
+    padding: 0;
+
+    &__content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: var(--card-medium-space);
+    }
+
+    &__name {
+        padding: var(--card-small-space);
+        padding-inline: var(--card-medium-space);
+        border-radius: var(--radius-small);
+        background-color: var(--black);
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 24px, 32px);
+        color: var(--white);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+}
+
+/* Карточка фото с подписью */
+.card-photo {
+    @extend .card-properties;
+
+    padding: 0;
+
+    &__content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: var(--card-large-space);
+        color: var(--white) !important;
+
+        * {
+            color: inherit;
+        }
+    }
+
+    &__img {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--black-gradient);
+        }
+    }
+}
+
+/* Карточка тариф */
+.card-tarif {
+    @extend .card-properties;
+
+    --card-tarif-list-item-size: 22px;
+
+    padding: unset;
+    gap: unset;
+
+    &__header {
+        position: relative;
+        padding: var(--card-large-space);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--black-green);
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 20px, 26px);
+        color: var(--white);
+        text-align: center;
+
+        > * {
+            position: relative;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            text-align: inherit;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--card-medium-space);
+        padding: var(--card-space);
+        border-bottom-left-radius: var(--card-radius);
+        border-bottom-right-radius: var(--card-radius);
+        background-color: var(--gray-light);
+        
+        .special & {
+            background-color: var(--black);
+        }
+    }
+
+    &__list {
+        @include size.calculate(font-size, 480px, 1600px, 14px, 16px);
+
+        > * + * {
+            margin-top: 8px;
+        }
+    }
+
+    &__list-item {
+        display: flex;
+        @include size.calculate(gap, 480px, 1600px, 4px, 8px);
+
+        .special & {
+            color: var(--gray-silver);
+        }
+
+        svg {
+            flex-shrink: 0;
+            width: var(--card-tarif-list-item-size);
+            height: var(--card-tarif-list-item-size);
+            fill: var(--green-dark);
+
+            .special & {
+                fill: var(--gray-silver);
+            }
+        }
+
+        &.accent {
+            background-color: var(--black);
+            @include size.calculate(padding, 480px, 1600px, 8px, 12px);
+            border-radius: var(--radius-small);
+            border: 1px solid var(--green-dark);
+            color: var(--white);
+
+            svg {
+                fill: var(--green-accent) !important;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        --card-tarif-list-item-size: 18px;
+    }
+}

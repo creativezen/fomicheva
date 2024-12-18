@@ -1,0 +1,104 @@
+<div class="forweb-modal js-modal">
+
+    <!-- Задать вопрос -->
+    <div class="forweb-modal__container modal-form" aria-label="Задать вопрос" aria-modal="true" data-forweb-target="modal-question">
+        <div class="forweb-modal__content">
+            <div class="forweb-modal__body">
+                <div class="block-form">
+                    <span class="forweb-modal__close js-close" aria-label="Закрыть форму"></span>
+                    <form class="form js-form" data-sitekey="" data-target="modal-question">
+                        <input type="hidden" name="recaptcha_response" class="recaptcha-response" value="">
+                        <input type="hidden" name="form-name" value="Начать сотрудничество">
+                        <legend class="form__header">
+                            <h4 class="form__title">Задать вопрос</h4>
+                            <p>Lorem Ipsum - это текст-"рыба", часто используемыйв печати и вэб-дизайне.</p>
+                        </legend>
+                        <fieldset class="form__body">
+                            <div class="form__item">
+                                <input class="input input-name" type="text" name="name" placeholder="Укажите ваше имя" required="">
+                            </div>
+                            <div class="form__item">
+                                <input class="input input-tel" type="tel" name="phone" placeholder="+7(ХХХ) ХХХ-ХХ-ХХ" required="">
+                            </div>
+                        </fieldset>
+                        <fieldset class="form__footer">
+                            <label class="label label--agree" for="agree-begin">
+                                <input class="checkbox input-agree" id="agree-begin" type="checkbox" required="">
+                                <span>Даю согласие на обработку и использование персональных данных согласно 152-ФЗ, с <a href="https://" target="_blank">правилами политики обработки персональных данных</a> ознакомлен</span>
+                            </label>
+                            <button type="submit" class="button accent">Задать вопрос</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Отзыв. Читать текст -->
+	<div class="forweb-modal__container modal-text js-modal-text" aria-label="Читать текст" aria-modal="true" data-forweb-target="modal-text">
+		<div class="forweb-modal__content">
+			<span class="forweb-modal__close js-close" aria-label="Закрыть текст"></span>
+			<div id="modal-text" class="forweb-modal__text">
+				<!-- Здесь вставляется текст -->
+			</div>
+		</div>
+	</div>
+
+    <!-- Отзыв. Смотреть скриншот -->
+	<div class="forweb-modal__container modal-image js-modal-image" aria-label="Смотреть изображение" aria-modal="true" data-forweb-target="modal-image">
+		<div class="forweb-modal__content">
+			<span class="forweb-modal__close js-close" aria-label="Закрыть просмотр изображения"></span>
+			<div id="modal-image" class="forweb-modal__image">
+				<!-- Здесь вставляется картинка -->
+			</div>
+		</div>
+	</div>
+
+    <!-- Успешно отправлено -->
+    <div class="forweb-modal__container js-modal-success" role="dialog" aria-modal="true"
+        data-forweb-target="modal-success">
+        <div class="forweb-modal__content">
+            <div class="form">
+                <div class="form__header">
+                    <span class="form__close js-close" aria-label="Закрыть модальное окно">
+                        <svg class="close-svg" viewbox="0 0 24 24">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="form__body">
+                    <legend class="form__legend">Успешно отправлено</legend>
+                    <div class="form__body_item">
+                        <p class="form__content_text">В ближайшее время наш специалист свяжется с вами, чтобы
+                            подтвердить ваши данные</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Произошла ошибка при отправке формы -->
+    <div class="forweb-modal__container js-modal-error" role="dialog" aria-modal="true"
+        data-forweb-target="modal-error">
+        <div class="forweb-modal__content">
+            <div class="form">
+                <div class="form__header">
+                    <span class="form__close js-close" aria-label="Закрыть модальное окно">
+                        <svg class="close-svg" viewbox="0 0 24 24">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="form__body">
+                    <legend class="form__legend">Что-то пошло не так...</legend>
+                    <div class="form__body_item">
+                        <p class="form__content_text">К сожалению, возникла ошибка. Свяжитесь, пожалуйста с оператором
+                            по телефону:</p>
+                        <a class="form__error-tel" href="tel:+78003509685">+7 (800) 350-96-85</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

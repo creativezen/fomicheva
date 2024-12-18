@@ -1,0 +1,208 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+.section-settings {
+    --section-space-large: 60px;
+    --section-space-medium: 30px;
+    --section-space-small: 18px;
+
+    position: relative;
+	overflow-x: clip;
+
+	&.stream {
+		/* Вертикальные отступы между секциями */
+		@include size.calculate(padding-top, 480px, 1600px, 40px, 120px);
+		@include size.calculate(padding-bottom, 480px, 1600px, 40px, 120px);
+
+		&[data-stream-top='no'] {
+			padding-top: 0 !important;
+		}
+
+		&[data-stream-bottom='no'] {
+			padding-bottom: 0 !important;
+		}
+	}
+
+    /* Для мини отступа между секциями */
+    &.offset-default {
+        * + & {
+            margin-top: var(--offset-default);
+        }
+    }
+
+	&.breadcrumbs {
+		@include size.calculate(padding-top, 480px, 1600px, 30px, 60px);
+	}
+
+    &.white {
+        background-color: var(--white);
+    }
+
+    &.silver {
+        background-color: var(--gray-silver);
+    }
+
+    &.dark {
+        background-color: var(--black-dark);
+    }
+
+    @media only screen and (max-width: 680px) {
+        --section-space-large: 24px;
+        --section-space-medium: 12px;
+        --section-space-small: 8px;
+    }
+}
+
+/* section */
+.section {
+	@extend .section-settings;
+
+	position: relative;
+
+	&__header,
+	&__body,
+	&__footer {
+		position: inherit;
+
+        &.centered {
+            > * {
+                margin-inline: auto;
+            }
+        }
+	}
+
+	&__header + &__body,
+	&__header + &__footer,
+    &__header + &__slider,
+    &__header + &__category,
+    &__header + &__frame {
+        @include size.calculate(margin-top, 480px, 1600px, 18px, 50px);
+	}
+
+	&__body + &__footer,
+	&__body + &__body,
+    &__body + &__slider,
+    &__body + &__header,
+    &__body + &__frame,
+    &__frame + &__frame,
+    &__frame + &__body,
+    &__slider + &__footer,
+    &__slider + * {
+		@include size.calculate(margin-top, 480px, 1600px, 24px, 40px);
+	}
+
+    &__hero + &__hero {
+        margin-top: var(--offset-default);
+    }
+
+    &__slider-body + &__slider-footer {
+        @include size.calculate(margin-top, 480px, 1460px, 20px, 40px);
+    }
+
+    &__body {
+        > * + [class*='block'] {
+            margin-top: var(--scale);
+        }
+    }
+
+    &__frame {
+        position: relative;
+        padding: var(--offset-fluid);
+        border-radius: var(--radius-large);
+
+        &.white {
+            background-color: var(--white);
+        }
+    }
+
+    &__soc {
+        display: flex;
+        align-items: center;
+        @include size.calculate(gap, 480px, 1600px, 6px, 12px);
+
+        > * {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            @include size.calculate(width, 480px, 1600px, 40px, 54px);
+            @include size.calculate(height, 480px, 1600px, 40px, 54px);
+            border-radius: var(--radius-small);
+            background-color: var(--gray-silver);
+            transition: var(--fast);
+            
+            @include mobile.hover {
+                background-color: var(--black);
+            }
+
+            img {
+                width: 80%;
+                height: 80%;
+                filter: brightness(100);
+            }
+        }
+
+        * + & {
+            margin-left: auto;
+        }
+    }
+
+    &__img {
+        max-height: 600px;
+        border-radius: var(--radius-large);
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            border-radius: inherit;
+            object-fit: cover;
+            object-position: 50%;
+        }
+    }
+
+    &__category {
+        padding-bottom: var(--offset-default);
+        border-bottom: 1px solid var(--gray-silver);
+        @include size.calculate(font-size, 480px, 1600px, 18px, 28px);
+        color: var(--green);
+
+        * {
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    &__box {
+        padding: var(--section-space-large);
+        border-radius: var(--radius-large);
+        background-color: var(--white);
+    }
+
+    &__category + &__body {
+        margin-top: var(--offset-default);
+    }
+
+    & + &:not(.stream) {
+        margin-top: var(--offset-default);
+    }
+
+    /* Для мини-отступа сверху */
+    & + &.offset {
+        margin-top: var(--space-medium);
+    }
+
+    @media only screen and (max-width: 780px) {
+        &__frame {
+            .grid-group {
+                @include size.calculate(row-gap, 480px, 780px, 30px, 40px);
+            }
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__soc {
+            * + & {
+                margin-left: 0;
+            }
+        }
+    }
+}

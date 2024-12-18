@@ -1,0 +1,37 @@
+@use '../mixins/fluid-size' as size;
+
+.marquee {
+    overflow: hidden;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    display: flex;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        @include size.calculate(font-size, 480px, 1720px, 60px, 120px);
+        border: 1px solid var(--dark-gray);
+        color: var(--dark-blue);
+        white-space: nowrap;
+        text-transform: uppercase;
+
+    }
+
+    &__item {
+        padding: calc(var(--scale) * 1);
+        padding-inline: calc(var(--scale) * 2);
+        line-height: 1;
+        font-size: inherit;
+        color: inherit;
+        text-transform: inherit;
+
+        /* компенсируем высоту строки снизу */
+        margin-bottom: -10px;
+        
+        /* компенсируем суммирование левой стороны рамки */
+        & + & {
+            border-left: 1px solid var(--dark-gray);
+        }
+    }
+
+}

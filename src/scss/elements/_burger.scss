@@ -1,0 +1,90 @@
+@use '../mixins/disable-mob-hover' as mobile;
+@use '../mixins/fluid-size' as size;
+
+.burger {
+    --time: 0.1s;
+    --icon-width: 14px;
+    --icon-height: 20px;
+    --line-height: 2px;
+    --spacing: 4px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include size.calculate(width, 480px, 1640px, 28px, 32px);
+    @include size.calculate(height, 480px, 1640px, 28px, 32px);
+    border-radius: 6px;
+    background-color: transparent;
+    z-index: 999;
+    cursor: pointer;
+    transition: var(--fast);
+
+    /* анимации при наведении на кнопку burger */
+    @include mobile.hover {
+        border-color: var(--white);
+
+        [class*='__icon']::after,
+        [class*='__icon']::before {
+            transform: translateX(0);
+        }
+    }
+
+    &__icon {
+        position: relative;
+        width: var(--icon-width);
+        height: var(--line-height);
+        
+        /* делаем центральную полоску прозрачной, т.к. у нас две полоски в дизайне */
+        background-color: transparent;
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: var(--icon-width);
+            height: var(--line-height);
+            background-color: var(--black);
+            transition: transform var(--time) ease-in, top var(--time) linear var(--time);
+        }
+        
+        &::before {
+            /* top: calc(var(--line-height) * -2); */
+            top: calc(-1 * (var(--line-height) + var(--spacing)));
+            transform: translateX(2px);
+        }
+        
+        &::after {
+            /* top: calc(var(--line-height) * 2); */
+            top: calc(var(--line-height) + var(--spacing));
+            transform: translateX(-2px);
+        }
+
+        &.active {
+
+            &::before,
+            &::after {
+                left: 0;
+                top: 0;
+                transition: top var(--time) linear, transform var(--time) ease-in var(--time);
+            }
+
+            &::before {
+                transform: rotate(45deg);
+            }
+            
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    &.active {
+        border-color: transparent;
+        background-color: var(--blue-accent);
+    }
+
+    @media only screen and (max-width: 680px) {
+        border-radius: 3px;
+    }
+}

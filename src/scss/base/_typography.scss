@@ -1,0 +1,191 @@
+@use '../mixins/disable-mob-hover' as mobile;
+@use '../mixins/font-face' as font;
+@use '../mixins/fluid-size' as size;
+
+/* Fonts connect */
+@include font.font-face('Unbounded', 'Unbounded-Regular', 400, normal);
+@include font.font-face('Winston', 'Winston-Regular', 400, normal);
+@include font.font-face('Winston', 'Winston-Medium', 500, normal);
+@include font.font-face('Winston', 'Winston-SemiBold', 600, normal);
+
+/* Typography */
+/* Конструктор общих стилей для всех заголовков */
+.title-property {
+	font-family: var(--font-title);
+	font-weight: 400;
+	line-height: 1.2;
+	letter-spacing: -0.04em;
+	color: var(--black);
+	transition: var(--fast);
+
+    &.white {
+        color: var(--white);
+    }
+
+    &.centered {
+        text-align: center;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* Наследуем общие стили из конструктора */
+	@extend .title-property;
+}
+
+/* Индивидуальные настройки для заголовков */
+h1 {
+	@include size.calculate(font-size, 480px, 1600px, 26px, 64px);
+    
+	& + * {
+        margin-top: var(--title-space-h1);
+	}
+}
+
+h2 {
+    @include size.calculate(font-size, 480px, 1600px, 24px, 52px);
+    
+	& + * {
+        margin-top: var(--title-space-h2);
+	}
+}
+
+h3 {
+    @include size.calculate(font-size, 480px, 1600px, 20px, 44px);
+    
+	& + * {
+        margin-top: var(--title-space-h3);
+	}
+}
+
+h4 {
+    @include size.calculate(font-size, 480px, 1600px, 18px, 32px);
+    
+	& + * {
+        margin-top: var(--title-space-h4);
+	}
+}
+
+h5 {
+    @include size.calculate(font-size, 480px, 1600px, 16px, 28px);
+    
+	& + * {
+        margin-top: var(--title-space-h5);
+	}
+}
+
+h6 {
+    @include size.calculate(font-size, 480px, 1600px, 16px, 24px);
+    
+	& + * {
+        margin-top: var(--title-space-h6);
+	}
+}
+
+blockquote {
+	@include size.calculate(border-radius, 480px, 1600px, 6px, 8px);
+	@include size.calculate(padding, 480px, 1600px, 16px, 26px);
+	@include size.calculate(font-size, 480px, 1600px, 16px, 20px);
+	font-style: italic;
+	font-weight: inherit;
+	line-height: inherit;
+    color: inherit;
+    background-color: var(--gray);
+
+	* {
+		font-size: inherit;
+		font-style: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		color: inherit;
+	}
+
+	> * + * {
+		margin-top: calc(var(--scale) * 1.2);
+	}
+}
+
+b,
+strong {
+	font-weight: 600;
+}
+
+small + small {
+	margin-top: calc(var(--scale) * 0.2);
+}
+
+ul:not([class]) {
+    --li-left-space: calc(var(--scale) * 0.6);
+
+    li {
+        position: relative;
+        padding-left: var(--li-left-space);
+        color: inherit;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            content: '';
+            @include size.calculate(width, 480px, 1460px, 4px, 6px);
+            @include size.calculate(height, 480px, 1460px, 4px, 6px);
+            border-radius: 50%;
+            background-color: var(--green);
+        }
+
+        * {
+            color: inherit;
+        }
+
+    }
+
+    li + li {
+        @include size.calculate(margin-top, 480px, 1460px, 8px, 14px);
+    }
+
+    @media only screen and (max-width: 780px) {
+        --li-left-space: 16px;
+    }
+
+    @media only screen and (max-width: 680px) {
+        --li-left-space: 10px;
+    }
+}
+
+/* Класс заголовков */
+.title {
+	@extend h2;
+
+    text-transform: uppercase;
+    /* компенсируем верхний отступ от внешней границы section */
+    /* margin-top: -0.4em; */
+
+    .section__hero & {
+        @include size.calculate(font-size, 480px, 1600px, 30px, 62px);
+    }
+
+    @media only screen and (max-width: 680px) {
+        hyphens: auto;
+    }
+}
+
+/* Модификаторы текста */
+.font-white {
+    color: var(--white);
+}
+
+.font-gray {
+    color: var(--gray);
+}
+
+.font-gray-silver {
+    color: var(--gray-silver);
+}
+
+.font-green {
+    color: var(--green);
+}

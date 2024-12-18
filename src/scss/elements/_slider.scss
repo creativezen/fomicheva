@@ -1,0 +1,46 @@
+@use '../mixins/fluid-size' as size;
+
+.slider {
+    --slide-width-default: 400px;
+
+    .swiper-slide {
+        max-width: var(--slide-width-default);
+        height: auto;
+    
+        > [class*="card"]:not(.card-logo) {
+            height: 100%;
+        }
+    }
+
+    &[data-slider-name="home-feedbacks"] {
+        .swiper-slide {
+            max-width: 500px;
+        }
+    }
+
+    &[data-slider-name="slider-partners"] {
+        .swiper-slide {
+            max-width: none;
+            width: auto;
+        }
+    }
+
+    &[data-slider-name="slider-documents"],
+    &[data-slider-name="slider-thanks"] {
+        .swiper-slide {
+            width: auto;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .swiper-slide {
+            max-width: 90%;
+        }
+    }
+}
+
+.slider-arrows {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

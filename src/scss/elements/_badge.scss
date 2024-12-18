@@ -1,0 +1,48 @@
+@use '../mixins/fluid-size' as size;
+
+.badge-properties {
+    padding: 4px 14px;
+    border-radius: 1000px;
+    font-family: var(--font-text);
+    @include size.calculate(font-size, 480px, 1600px, 12px, 14px);
+    color: var(--black-green);
+
+    @media only screen and (max-width: 680px) {
+        padding: 2px 8px;
+    }
+}
+
+.badge {
+    @extend .badge-properties;
+
+    display: inline-block;
+    border: 1px solid var(--gray-silver);
+
+    &.gray {
+        background-color: var(--gray-light);
+        border: 0;
+    }
+
+    &.green {
+        background-color: var(--green-accent);
+        border: 0;
+    }
+
+    &.black {
+        background-color: var(--black);
+        border: 0;
+        color: var(--white);
+    }
+
+    &.light {
+        background-color: var(--light-gray);
+        border: 0;
+    }
+}
+
+.badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @include size.calculate(gap, 480px, 1720px, 6px, 10px);
+}

@@ -1,0 +1,497 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+/* btn-proto */
+.btn-proto {
+	--btn-radius: 12px;
+	--btn-radius-medium: 8px;
+	--btn-radius-small: 6px;
+    --button-icon-size: 18px;
+	
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+    gap: 0.6em;
+	border: none;
+	border-radius: var(--btn-radius);
+    font-family: var(--font-text);
+    font-weight: 500;
+	text-align: center;
+	line-height: 1;
+	text-decoration: none;
+    text-transform: uppercase;
+	cursor: pointer;
+	transition: var(--fast);
+
+    @media only screen and (max-width: 680px) {
+        --btn-radius: 8px;
+        --btn-radius-medium: 4px;
+        --btn-radius-small: 3px;
+    }
+}
+
+/* btn */
+.button {
+
+    /* Наследуем базовые стили из конструктора */
+	@extend .btn-proto;
+
+    /* Устанавливаем уникальные стили */
+	@include size.calculate(min-height, 480px, 1640px, 44px, 54px);
+	@include size.calculate(padding-inline, 480px, 1640px, 14px, 20px);
+	@include size.calculate(font-size, 480px, 1680px, 12px, 18px);
+    /* компенсируем высоту строки текста */
+    line-height: 0.8;
+
+    
+    svg {
+        flex-shrink: 0;
+        width: var(--button-icon-size);
+        height: var(--button-icon-size);
+        fill: var(--black);
+    }
+    
+    &.accent {
+        background-color: var(--green-accent);
+        color: var(--black);
+
+        @include mobile.hover {
+            background-color: var(--green-hover);
+        }
+
+        &:focus {
+            outline-color: 1px solid var(--green-dark);
+        }
+        
+        &:active {
+            background-color: var(--green-click);
+            border-color: var(--green-click);
+        }
+
+        &.active {
+            background-color: var(--black-green);
+            border-color: var(--black-green);
+            cursor: default;
+            pointer-events: none;
+            color: var(--white);
+        }
+    }
+
+    &.black {
+        background-color: var(--black);
+        color: var(--white);
+
+        @include mobile.hover {
+            background-color: var(--green-hover);
+            color: var(--black);
+            
+            svg {
+                fill: var(--black);
+            }
+        }
+
+        svg {
+            fill: var(--green-accent);
+        }
+
+        &:focus {
+            outline-color: 1px solid var(--green-dark);
+        }
+        
+        &:active {
+            background-color: var(--green-click);
+            border-color: var(--green-click);
+        }
+    }
+
+    &.white {
+        background-color: var(--white);
+        color: var(--black);
+
+        @include mobile.hover {
+            background-color: var(--green-hover);
+            color: var(--black);
+            
+            svg {
+                fill: var(--black);
+            }
+        }
+
+        svg {
+            fill: var(--black);
+        }
+
+        &:focus {
+            outline-color: 1px solid var(--green-dark);
+        }
+        
+        &:active {
+            background-color: var(--green-click);
+            border-color: var(--green-click);
+        }
+    }
+    
+    &.dark {
+        background-color: var(--black-green);
+        color: var(--gray-silver);
+
+        @include mobile.hover {
+            background-color: var(--green-hover);
+            color: var(--black);
+            
+            svg {
+                fill: var(--black);
+            }
+        }
+
+        svg {
+            fill: var(--green-accent);
+        }
+
+        &:focus {
+            outline-color: 1px solid var(--green-dark);
+        }
+        
+        &:active {
+            background-color: var(--green-click);
+            border-color: var(--green-click);
+        }
+    }
+
+    &.zero {
+        background-color: transparent;
+        border: 2px solid var(--gray);
+        color: var(--black);
+
+        @include mobile.hover {
+            background-color: var(--green-hover);
+            border-color: var(--green-hover);
+        }
+        
+        &:focus {
+            outline-color: 1px solid var(--green-dark);
+        }
+        
+        &:active {
+            background-color: var(--green-click);
+            border-color: var(--green-click);
+        }
+
+        &.active {
+            background-color: var(--green-accent);
+            border-color: var(--green-accent);
+            color: var(--black);
+        }
+    }
+
+    &.disabled {
+        filter: saturate(0);
+        pointer-events: none;
+        cursor: not-allowed;
+	}
+
+    &.rounded {
+        @include size.calculate(width, 480px, 1600px, 44px, 60px);
+        @include size.calculate(height, 480px, 1600px, 44px, 60px);
+        border-radius: 50%;
+        
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        &.medium {
+            @include size.calculate(width, 480px, 1600px, 34px, 50px);
+            @include size.calculate(height, 480px, 1600px, 34px, 50px);
+            border-radius: 50%;
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        &.small {
+            @include size.calculate(width, 480px, 1600px, 28px, 40px);
+            @include size.calculate(height, 480px, 1600px, 28px, 40px);
+            border-radius: 50%;
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+    
+    &.medium {
+        --button-icon-size: 16px;
+
+        gap: 0.4em;
+        @include size.calculate(min-height, 480px, 1640px, 36px, 40px);
+        @include size.calculate(padding-inline, 480px, 1640px, 12px, 18px);
+        @include size.calculate(font-size, 480px, 1680px, 13px, 16px);
+        border-radius: var(--btn-radius-medium);
+        text-transform: none;
+    }
+    
+	&.small {
+        --button-icon-size: 14px;
+
+        gap: 0.2em;
+        @include size.calculate(min-height, 480px, 1640px, 28px, 32px);
+        @include size.calculate(padding-inline, 480px, 1640px, 10px, 16px);
+        @include size.calculate(font-size, 480px, 1680px, 8px, 12px);
+        border-radius: var(--btn-radius-small);
+	}
+}
+
+
+/* соц. кнопка */
+.button-social {
+    --social-icon-size: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include size.calculate(width, 780px, 1640px, 40px, 60px);
+    @include size.calculate(height, 780px, 1640px, 40px, 60px);
+    border-radius: 12px;
+    background-color: var(--gray-silver);
+    overflow: hidden;
+    transition: var(--fast);
+
+    @include mobile.hover {
+        background-color: var(--black);
+    }
+
+    &:focus {
+        outline-color: 1px solid var(--green-dark);
+    }
+    
+    &:active {
+        background-color: var(--green-click);
+    }
+
+    img {
+        width: var(--social-icon-size);
+        height: var(--social-icon-size);
+    }
+    
+    @media only screen and (max-width: 680px) {
+        --social-icon-size: 20px;
+
+        border-radius: 8px;
+    }
+}
+
+/* кнопки слайдера */
+.button-slider {
+    --button-slider-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    @include size.calculate(padding-inline, 480px, 1600px, 14px, 20px);
+    height: var(--button-slider-height);
+    background-color: transparent;
+    border: 2px solid var(--green-dark);
+    border-radius: 10000px;
+    transition: var(--fast);
+
+    @include mobile.hover {
+        border-color: var(--green-accent);
+        
+        svg {
+            fill: var(--green-accent);
+        }
+    }
+
+    svg {
+        width: 30px;
+        height: auto;
+        fill: var(--green-dark);
+        transition: var(--fast)
+    }
+
+    &:active {
+        border-color: var(--green-click);
+
+        svg {
+            fill: var(--green-click);
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        --button-slider-height: 30px;
+
+        svg {
+            width: 20px;
+            height: auto;
+        }
+    }
+}
+
+/* Кнопки плей, зум и подобные им */
+.button-popup {
+    --popup-icon-size: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include size.calculate(width, 780px, 1640px, 40px, 60px);
+    @include size.calculate(height, 780px, 1640px, 40px, 60px);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    background: rgba(1, 13, 7, 0.3);
+    overflow: hidden;
+    transition: var(--fast);
+
+    @include mobile.hover {
+        background-color: var(--green-accent);
+
+        svg {
+            fill: var(--black);
+        }
+    }
+
+    svg {
+        width: var(--popup-icon-size);
+        height: var(--popup-icon-size);
+        fill: var(--white);
+        transition: var(--fast);
+    }
+
+    &:active {
+        background-color: var(--green-click);
+    }
+
+    @media only screen and (max-width: 680px) {
+        --popup-icon-size: 16px;
+
+        border-radius: 8px;
+    }
+}
+
+/* группа  кнопок */
+.button-group {
+    display: flex;
+    align-items: center;
+    @include size.calculate(gap, 480px, 1600px, 8px, 12px);
+
+    overflow-x: auto; /* Включаем горизонтальную прокрутку */
+    scroll-behavior: smooth; /* Плавная прокрутка */
+    white-space: nowrap; /* Отключаем перенос строк внутри контейнера */
+    -ms-overflow-style: none;  /* Для Internet Explorer и Edge */
+    scrollbar-width: none; /* Для Firefox */
+
+    &::-webkit-scrollbar {
+        display: none; /* Скрываем скроллбар */
+    }
+
+    &.centered {
+        justify-content: center;
+    }
+    
+    @media only screen and (max-width: 1280px) {
+        &.centered {
+            justify-content: flex-start;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        .section__body & {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+/* Кнопка наверх */
+.button-top {
+    --button-top-size: 48px;
+    --button-top-arrow-size: 24px;
+
+    position: fixed;
+    right: var(--offset-default);
+    bottom: var(--offset-default);
+    height: var(--button-top-size);
+    width: var(--button-top-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray-dark);
+    border-radius: 50%;
+    opacity: 0;
+    transition: var(--fast);
+    pointer-events: none;
+    z-index: 98;
+
+    @include mobile.hover {
+        background-color: var(--green-hover);
+
+        svg {
+            fill: var(--black);
+        }
+    }
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    svg {
+        width: var(--button-top-arrow-size);
+        height: var(--button-top-arrow-size);
+        fill: var(--white);
+    }
+
+    @media only screen and (max-width: 980px) {
+        right: 30px;
+        bottom: 30px;
+    }
+
+    @media only screen and (max-width: 780px) {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    @media only screen and (max-width: 680px) {
+        --button-top-size: 36px;
+        --button-top-arrow-size: 18px;
+
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
+/* Кнопка читать далее  */
+.button-accordion {
+    --button-accordion-icon-size: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green);
+
+    svg {
+        width: var(--button-accordion-icon-size);
+        height: var(--button-accordion-icon-size);
+        fill: var(--green);
+        transition: var(--fast);
+    }
+
+    [open] &,
+    .active & {
+        color: var(--black);
+
+        svg {
+            transform: rotate(-180deg);
+            fill: var(--black);
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        --button-accordion-icon-size: 18px;
+        gap: 3px;
+    }
+}

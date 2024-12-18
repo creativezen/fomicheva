@@ -1,0 +1,721 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+.list-properties {
+    --list-space-large: 60px;
+    --list-space: 40px;
+    --list-space-medium: 30px;
+    --list-space-small: 18px;
+
+    padding: var(--list-space-large);
+    border-radius: var(--radius-large);
+    background-color: var(--white);
+
+    [class*="accordion-summary"] {
+        list-style: none;
+        cursor: pointer;
+        display: inline-block;
+
+        ::marker {
+            display: none
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        --list-space-large: 24px;
+        --list-space: 24px;
+        --list-space-medium: 12px;
+        --list-space-small: 8px;
+    }
+}
+
+/* Список со стрелками  */
+.list-arrow {
+    @extend .list-properties;
+
+    --list-arrow-icon-size: 60px;
+
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+
+    &__item {
+        position: relative;
+        padding: var(--list-space-medium) 0;
+        display: flex;
+        align-items: center;
+        gap: var(--list-space-medium);
+        border-top: 1px solid var(--gray-silver);
+        /* cursor: pointer; */
+        
+        &:first-child {
+            border-top: none;
+            padding-top: unset;
+        }
+
+        &:last-child {
+            padding-bottom: unset;
+        }
+
+        a,
+        *[data-forweb-path] {
+            display: block;
+            cursor: pointer;
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        @include mobile.hover {
+            [class*="__icon"] {
+                background-color: var(--green-hover);
+            }
+
+            a,
+            *[data-forweb-path] {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__title {
+        flex: auto;
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 22px, 38px);
+        color: var(--black);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        .dark &,
+        .gray-dark & {
+            color: var(--white);
+        }
+    }
+
+    &__icon {
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--list-arrow-icon-size);
+        height: var(--list-arrow-icon-size);
+        border-radius: 50%;
+        background-color: var(--white);
+        transition: var(--fast);
+
+        svg {
+            width: 50%;
+            height: 50%;
+            fill: var(--black);
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        --list-arrow-icon-size: 38px;
+
+        &__item {
+            padding: var(--list-space-medium) 0;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__icon {
+            width: auto;
+            height: auto;
+
+            svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    }
+}
+
+/* Список нумерованный вертикальный   */
+.list-number {
+    @extend .list-properties;
+
+    padding: 0;
+    background-color: transparent;
+
+    &__item {
+        padding: var(--list-space-large) 0;
+        border-top: 1px solid var(--gray-silver);
+
+        &:first-child {
+            border-top: none;
+            padding-top: unset;
+        }
+
+        &:last-child {
+            padding-bottom: unset;
+        }
+    }
+
+    &__index {
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 16px, 20px);
+        color: var(--gray-silver);
+
+        & + * {
+            margin-top: var(--list-space-medium);
+        }
+    }
+
+    &__content {
+        display: flex;
+        gap: var(--list-space-large);
+
+        .vertical & {
+            flex-direction: column;
+            gap: var(--list-space-medium);
+            align-items: flex-start;
+        }
+    }
+
+    &__title {
+        flex-shrink: 0;
+        @include size.calculate(width, 780px, 1600px, 360px, 520px);
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 22px, 32px);
+        color: var(--black);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        .dark &,
+        .gray-dark & {
+            color: var(--white);
+        }
+    }
+
+    &__text {
+        flex: auto;
+
+        > * + p {
+            @include size.calculate(margin-top, 480px, 1600px, 8px, 16px);
+        }
+    }
+
+    &.vertical {
+        flex-direction: column;
+        gap: var(--list-space-medium);
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            flex-direction: column;
+            gap: var(--list-space-medium);
+        }
+
+        &__title {
+            width: 100%;
+        }
+    }
+}
+
+/* Список параметров программы  */
+.list-params {
+    --list-params-space: 30px;
+
+    display: flex;
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    gap: 1px;
+    
+    &__item {
+        flex: 1;
+        padding: var(--list-params-space);
+        background-color: var(--white);
+        height: auto;
+    }
+
+    &__name {
+        @include size.calculate(font-size, 480px, 1600px, 13px, 18px);
+        color: var(--green);
+
+        * {
+            font-size: inherit;
+            color: inherit;       
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        & + * {
+            margin-top: var(--offset-default);
+        }
+    }
+
+    &__value {
+        font-weight: 500;
+        @include size.calculate(font-size, 480px, 1600px, 18px, 26px);
+        letter-spacing: -0.04em;
+
+        * {
+            font-weight: inherit;
+            font-size: inherit;
+        }
+    }
+
+    @media only screen and (max-width: 780px) {
+        flex-wrap: wrap;
+    }
+
+    @media only screen and (max-width: 680px) {
+        --list-params-space: 16px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        &__item {
+            width: 100%;
+        }
+
+        &__item + &__item {
+            border-left: unset;
+            border-top: 1px solid var(--gray-silver);
+        }
+    }
+
+}
+
+/* Список таймлайн */
+.list-timeline {
+
+    --list-timeline-space-left: 30px;
+    --list-timeline-marker-size: 12px;
+    --list-timeline-marker-offset: -0.38em;
+
+    padding-left: 1em;
+
+    &__item {
+        padding-left: var(--list-timeline-space-left);
+        border-left: 1px solid var(--gray);
+
+        .white & {
+            color: var(--gray-silver);
+            border-color: rgba(186, 206, 199, 0.42);
+        }
+    }
+
+    &__item + &__item {
+        @include size.calculate(padding-top, 480px, 1600px, 20px, 40px);
+
+        .article & {
+            margin-top: 0 !important;
+        }
+    }
+
+    &__value {
+        position: relative;
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 22px, 32px);
+        color: inherit;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: calc(-1 * calc(var(--list-timeline-space-left) + calc(var(--list-timeline-marker-size)/2)));
+            width: var(--list-timeline-marker-size);
+            height: var(--list-timeline-marker-size);
+            border-radius: 50%;
+            background-color: var(--green);
+
+            .white & {
+                background-color: var(--white);
+            }
+        }
+
+        > *:not(.badge) {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        & + * {
+            @include size.calculate(margin-top, 480px, 1600px, 8px, 16px);
+        }
+    }
+
+    &__body {
+        > * {
+            color: inherit;
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        > * + * {
+            @include size.calculate(margin-top, 480px, 1600px, 8px, 12px);
+        }
+    }
+
+    &.white {
+        &__title,
+        &__body {
+            color: var(--gray-silver);
+        }
+    }
+
+    @media only screen and (max-width: 780px) {
+        --list-timeline-space-left: 20px;
+        --list-timeline-marker-size: 8px;
+        --list-timeline-marker-offset: -0.34em;
+    }
+
+    @media only screen and (max-width: 680px) {
+        --list-timeline-space-left: 16px;
+    }
+}
+
+/* Список книг (или других продуктов) */
+.list-product {
+    @extend .list-properties;
+
+    padding: 0;
+    background-color: transparent;
+    
+    &__item {
+        padding: var(--list-space);
+        display: flex;
+        gap: var(--list-space-large);
+        border-radius: var(--radius-large);
+        background-color: var(--white);
+    }
+
+    &__item + &__item {
+        margin-top: var(--offset-default);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include size.calculate(gap, 480px, 1600px, 12px, 20px);
+    }
+
+    &__title {
+        flex-shrink: 0;
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 22px, 32px);
+        color: var(--black);
+
+        *:not([class]) {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        > * + * {
+            @include size.calculate(margin-top, 480px, 1600px, 12px, 18px);
+        }
+
+        .dark &,
+        .gray-dark & {
+            color: var(--white);
+        }
+    }
+
+    &__text {
+        flex: auto;
+
+        > * + p {
+            @include size.calculate(margin-top, 480px, 1600px, 8px, 16px);
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        @include size.calculate(gap, 480px, 1600px, 12px, 20px);
+    }
+
+    &__price {
+        small {
+            color: var(--gray);
+        }
+    }
+
+    &__price-value {
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 20px, 28px);
+        line-height: 1;
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+    }
+
+    &__img {
+        flex: 0 0 30%;
+        max-width: 350px;
+
+        img {
+            width: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+    }
+
+    &__accordion-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: var(--fast);
+        border-top: 1px solid transparent;
+
+        [open] + & {
+            @include size.calculate(padding-top, 480px, 1600px, 12px, 20px);
+            grid-template-rows: 1fr;
+            border-color: var(--gray-silver);
+        }
+    }
+    
+    &__accordion-content {
+        overflow: hidden;
+        
+        /* Отталкиваем следующий элемент от предыдущего */
+        > * + * {
+            @include size.calculate(margin-top, 480px, 1600px, 12px, 20px);
+        }
+    }
+
+    &__accordion-datails[open] {
+        @include size.calculate(padding-bottom, 480px, 1600px, 12px, 20px);
+    }
+    
+    @media only screen and (max-width: 780px) {
+        &__item {
+            flex-direction: column-reverse;
+        }
+
+        &__img {
+            flex: 0 0 auto;
+            max-width: 400px;
+            margin-inline: auto;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            flex-direction: column;
+            gap: var(--list-space-medium);
+        }
+
+        &__title {
+            width: 100%;
+        }
+    }
+}
+
+/* Списко программы */
+.list-programm {
+    @extend .list-properties;
+
+    --accordion-programm-icon-size: 40px;
+
+    padding: unset;
+    background-color: unset;
+
+    &__item {
+        position: relative;
+        border-radius: var(--radius-large);
+        background-color: var(--black-green);
+        overflow: hidden;
+        cursor: pointer;
+
+        @include mobile.hover {
+            background-color: var(--gray-dark);
+        }
+
+        &.active {
+            background-color: var(--gray-dark);
+        }
+    }
+
+    &__item + &__item {
+        margin-top: var(--offset-default);
+    }
+
+    &__accordion {
+        padding: var(--list-space-medium);
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        transition: var(--fast);
+
+        .active & {
+            gap: var(--list-space-small);
+        }
+    }
+
+    &__accordion-datails {
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            z-index: 1;
+        }
+    }
+
+    &__accordion-summary {
+        width: 100%;
+        display: flex !important;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__accordion-button {
+        display: flex;
+        align-items: center;
+        gap: var(--list-space-large);
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 18px, 26px);
+        color: var(--gray-silver);
+
+        [open] & {
+            color: var(--white);
+        }
+
+        *:not([class*="button"]) {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit !important;
+        }
+    }
+
+    &__accordion-icon {
+        flex-shrink: 0;
+        margin-top: unset;
+        margin-left: auto;
+        width: var(--accordion-programm-icon-size);
+        height: var(--accordion-programm-icon-size);
+        transform: rotate(45deg);
+        border-radius: 50%;
+        background-color: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        transition: var(--fast);
+
+        svg {
+            fill: var(--white);
+        }
+
+        [open] & {
+            transform: unset;
+        }
+    }
+
+    &__accordion-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: var(--fast);
+        
+        [open] + & {
+            grid-template-rows: 1fr;
+        }
+    }
+    
+    &__accordion-content {
+        color: var(--white);
+        overflow: hidden;
+
+        * {
+            color: inherit;
+        }
+
+        /* Отталкиваем следующий элемент от предыдущего */
+        > * + * {
+            margin-top: var(--offset-default);
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        --accordion-programm-icon-size: 30px;
+
+        &__accordion-button {
+            align-items: flex-start;
+        }
+    }
+}
+
+/* Список формат обучения */
+.list-format {
+    --list-format-number-size: 50px;
+    --list-format-gap-size: 26px;
+
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        background-color: var(--gray-silver);
+        left: calc(var(--list-format-number-size) / 2);
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__item + &__item {
+        @include size.calculate(padding-top, 480px, 1600px, 30px, 50px);
+    }
+
+    &__value {
+        display: flex;
+        align-items: center;
+        gap: var(--list-format-gap-size);
+
+        & + [class*="__body"] {
+            @include size.calculate(margin-top, 480px, 1600px, 12px, 20px);
+        }
+    }
+
+    &__number {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--list-format-number-size);
+        height: var(--list-format-number-size);
+        background-color: var(--white);
+        border-radius: 50%;
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 14px, 20px);
+        color: var(--gray-silver);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    &__body {
+        padding-left: calc(var(--list-format-gap-size) + var(--list-format-number-size));
+    }
+
+    @media only screen and (max-width: 680px) {
+        --list-format-number-size: 40px;
+        --list-format-gap-size: 16px;
+    }
+}

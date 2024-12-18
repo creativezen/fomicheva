@@ -1,0 +1,579 @@
+@use '../mixins/fluid-size' as size;
+@use '../mixins/disable-mob-hover' as mobile;
+
+.block-properties {
+    --block-space-large: 60px;
+    --block-space-medium: 40px;
+    --block-space-small: 20px;
+    --block-radius: var(--radius-large);
+    --block-space: calc(var(--scale) * 3);
+
+    position: relative;
+    padding: var(--block-space-medium);
+    border-radius: var(--block-radius);
+    background-color: var(--black-dark);
+    overflow: hidden;
+
+    [class*="__content"] {
+        position: relative;
+    }
+
+    [class*="__title"]:not(.block-form [class*=__title]) {
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 26px, 52px);
+        color: var(--white);
+        text-transform: uppercase;
+
+        * {
+            font-size: inherit;
+            text-transform: inherit;
+        }
+        
+        &.large {
+            @include size.calculate(font-size, 480px, 1600px, 26px, 64px);
+        }
+
+        &.small {
+            @include size.calculate(font-size, 480px, 1600px, 26px, 40px);
+        }
+    }
+
+    [class*="__body"] {
+        margin-top: 0;
+        flex: auto;
+        @include size.calculate(font-size, 480px, 1600px, 14px, 18px);
+        color: var(--gray-light);
+
+
+        > * + * {
+            @include size.calculate(margin-top, 480px, 1600px, 8px, 12px);;
+        }
+        
+        *:not([class]) {
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    [class*="__cta"] {
+        margin-top: 0;
+        flex-shrink: 0;
+    }
+
+    &.large {
+        padding: var(--block-space-large);
+    }
+
+    &.small {
+        padding: var(--block-space-small);
+    }
+
+    @media only screen and (max-width: 780px) {
+        --block-space-large: 20px;
+        --block-space-medium: 16px;
+        --block-space-small: 10px;
+        --block-radius: var(--radius-small);
+
+        [class*='button']:not([type="submit"]) {
+            min-height: 32px;
+            font-size: 12px;
+    
+            svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+    }
+}
+
+/* Блок с формой */
+.block-form {
+    @extend .block-properties;
+
+    color: var(--white);
+}
+
+/* Верхнийх баннер в основном экране */
+.block-top {
+    @extend .block-properties;
+
+    &__content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--block-space-medium);
+        @include size.calculate(gap, 780px, 1600px, 10px, 60px);
+    }
+
+    &__title {
+        flex: auto;
+        flex-shrink: 0;
+        @include size.calculate(font-size, 780px, 1600px, 20px, 52px);
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+
+        em,
+        b,
+        i,
+        strong,
+        b {
+            font-style: normal;
+            color: var(--green-accent);
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        &__content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+/* Баннер Все о бизнесе в России */
+.block-business {
+    @extend .block-properties;
+
+    &__content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--block-space-medium);
+    }
+    
+    &__title {
+        flex: auto;
+        flex-shrink: 0;
+    }
+
+    @media only screen and (max-width: 480px) {
+        &__content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+/* Баннера Станьте партнером */
+.block-partner {
+    @extend .block-properties;
+
+    &__content {
+        display: flex;
+        align-items: flex-end;
+        gap: var(--block-space-medium);
+    }
+
+    &__title {
+        flex: auto;
+        flex-shrink: 0;
+        @include size.calculate(max-width, 680px, 1600px, 180px, 400px);
+    }
+
+    @media only screen and (max-width: 480px) {
+        &__content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__title {
+            max-width: none;
+        }
+    }
+}
+
+/* Баннер обратной формы */
+.block-contact {
+    @extend .block-properties;
+    padding: var(--block-space-large);
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: var(--block-space-large);
+    }
+
+    &__text {
+        flex: auto;
+        min-width: 50%;
+        max-width: 860px;
+    }
+
+    &__title {
+        & + * {
+            margin-top: var(--block-space-medium);
+        }
+    }
+
+    &__paragraph {
+        @include size.calculate(font-size, 480px, 1600px, 16px, 22px);
+        color: var(--gray-silver);
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            flex-direction: column;
+        }
+    }
+}
+
+/* Баннер Выгодное предложение оффер */
+.block-offer {
+    @extend .block-properties;
+
+    --block-offer-space: 30px;
+
+    padding: unset;
+    padding-right: var(--block-space-medium);
+
+
+    &__content {
+        display: flex;
+        align-items: center;
+
+        > * + * {
+            padding-left: var(--block-offer-space);
+        }
+    }
+
+    &__body {
+        padding: var(--block-space-medium);
+        padding-right: unset;
+    }
+
+    &__text {
+        @include size.calculate(font-size, 480px, 1600px, 14px, 18px);
+
+        > * + * {
+            @include size.calculate(margin-top, 480px, 1600px, 8px, 12px);;
+        }
+
+        * {
+            font-size: inherit;
+        }
+    }
+
+    &__img {
+        margin-top: auto;
+        flex-shrink: 0;
+        @include size.calculate(max-width, 480px, 1600px, 180px, 280px);
+    }
+
+    @media only screen and (max-width: 780px) {
+        padding-right: unset;
+        padding-bottom: var(--block-space-medium);
+
+        &__content {
+            flex-direction: column;
+            align-items: flex-start;
+
+            > * + * {
+                padding-left: unset;
+                padding-top: var(--block-offer-space);
+            }
+        }
+
+        &__body {
+            padding-right: var(--block-space-medium);
+            padding-bottom: unset;
+        }
+
+        &__cta {
+            order: 1;
+            padding-inline: var(--block-space-medium);
+        }
+
+        &__img {
+            order: 2;
+            padding-top: 0;
+            margin-left: auto;
+            margin-bottom: calc(-1 * var(--block-space-medium));
+            margin-right: var(--block-space-medium);
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        --block-offer-space: 20px
+    }
+}
+
+/* Баннер обучение по маркетплейсам */
+.block-marketplace {
+    @extend .block-properties;
+
+    padding: unset;
+
+    &__content {
+        display: flex;
+    }
+
+    &__body {
+        max-width: 70%;
+        padding: var(--block-space-medium);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--block-space-small);
+
+        > * + * {
+            margin-top: 0 !important;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        right: -2em;
+        bottom: calc(-1 * var(--block-space-medium));
+        margin-top: auto;
+        flex-shrink: 0;
+        height: 100%;
+        max-width: 360px;
+        @include size.calculate(width, 480px, 1600px, 220px, 360px);
+        
+        img {
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            flex-direction: column;
+        }
+
+        &__body {
+            max-width: none;
+            padding-bottom: unset;
+            hyphens: auto;
+        }
+
+        &__img {
+            position: static;
+            margin-inline: auto;
+        }
+
+        &__cta {
+            [class*="button"] {
+                width: 100%;
+            }
+        }       
+    }
+}
+
+/* Баннер Международные рынки */
+.block-markets {
+    @extend .block-properties;
+
+    padding: unset;
+
+    &__content {
+        display: flex;
+    }
+
+    &__tagline {
+        @include size.calculate(font-size, 480px, 1600px, 18px, 26px);
+        color: var(--white);
+
+        * {
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    &__body {
+        max-width: 50%;
+        padding: var(--block-space-large);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--block-space-medium);
+
+        > * + * {
+            margin-top: 0 !important;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        right: 0;
+        bottom: calc(-1 * var(--block-space-large));
+        margin-top: auto;
+        flex-shrink: 0;
+        height: 100%;
+        max-width: 50%;
+        
+        img {
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            flex-direction: column;
+        }
+
+        &__body,
+        &__img {
+            max-width: none;
+        }
+
+        &__img {
+            position: static;
+            width: 280px;
+            margin-inline: auto;
+        }
+
+        &__cta {
+            [class*="button"] {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Баннер об Академии */
+.block-academy {
+    @extend .block-properties;
+
+    background-color: var(--black);
+    padding: unset;
+    display: flex;
+
+    &__content {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    &__tagline {
+        @include size.calculate(font-size, 480px, 1600px, 18px, 26px);
+        color: var(--white);
+
+        * {
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    &__body {
+        max-width: 50%;
+        padding: var(--block-space-large);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--block-space-medium);
+
+        > * + * {
+            margin-top: 0 !important;
+        }
+    }
+
+    &__img {
+        margin-left: auto;
+        flex-shrink: 0;
+        height: 100%;
+        width: 50%;
+        max-width: 500px;
+        
+        img {
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__cover {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    @media only screen and (max-width: 680px) {
+        &__content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__img {
+            height: auto;
+        }
+
+        &__body {
+            max-width: none;
+            width: 100%;
+        }
+
+        &__cta {
+            [class*="button"] {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Баннер для видео */
+.block-video {
+    @extend .block-properties;
+
+    --block-video-height: 470px;
+
+    min-height: var(--block-video-height);
+    display: flex;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 20px, 32px);
+        color: var(--white);
+
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    &__body {
+        flex: auto !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        margin-top: auto;
+    }
+
+    &__avatar {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        img {
+            @include size.calculate(width, 480px, 1600px, 60px, 120px);
+            @include size.calculate(height, 480px, 1600px, 60px, 120px);
+            object-fit: cover;
+            object-position: 50%;
+            border-radius: 50%;
+
+            & + img {
+                margin-left: -1.6em;
+            }
+        }
+    }
+
+    &__button {
+        position: absolute;
+    }
+
+    @media only screen and (max-width: 780px) {
+        --block-video-height: 380px;
+    }
+}

@@ -1,0 +1,176 @@
+@use '../mixins/fluid-size' as size;
+
+.hero-properties {
+    --hero-height-default: 600px;
+    --hero-height-large: 740px;
+    --hero-height-single: 480px;
+    --hero-padding: var(--offset-fluid);
+
+    min-height: var(--hero-height-default);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    border-radius: var(--radius-large);
+    overflow: hidden;
+
+    &.large {
+        min-height: var(--hero-height-large);
+    }
+
+    &.single {
+        min-height: var(--hero-height-default);
+    }
+
+    @media only screen and (max-width: 780px) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+    
+    @media only screen and (max-width: 680px) {
+        --hero-height-default: 70vh;
+        --hero-height-large: 85vh;
+        --hero-height-single: auto;
+    }
+}
+
+.hero {
+    @extend .hero-properties;
+
+    min-height: var(--hero-height-default);
+    padding: var(--hero-padding);
+
+    &__img {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        border-radius: inherit;
+
+        &::after {
+            content: '';
+            position: inherit;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background-image: var(--black-gradient);
+
+            .large & {
+                height: unset;
+                inset: 0;
+            }
+
+            .single & {
+                height: 100%;
+            }
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            object-position: 50%;
+            object-fit: cover;
+        }
+    }
+
+    &__photo {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        .expert & {
+            @include size.calculate(max-width, 780px, 1600px, 500px, 600px);
+        }
+    }
+
+    &__content {
+        margin-top: auto;
+        position: relative;
+        color: var(--white);
+        width: 100%;
+        @include size.calculate(max-width, 480px, 1600px, 1000px, 1050px);
+
+        *:not([class*="button"]):not([class*="breadcrumbs"]) {
+            color: inherit;
+        }
+
+        * + [class*="button"],
+        * + [class*="breadcrumbs"],
+        .badge-group + * {
+            margin-top: clamp(20px, 1.6em, 40px);
+        }
+
+        .badge {
+            background: rgba(211, 226, 221, 0.4);
+        }
+
+        .expert & {
+            max-width: 700px;
+        }
+    }
+
+    &__tagline {
+        font-family: var(--font-title);
+        @include size.calculate(font-size, 480px, 1600px, 16px, 30px);
+
+        *:not([class]) {
+            font-family: inherit;
+            font-size: inherit;
+        }
+    }
+
+    & + & {
+        margin-top: var(--offset-default);
+    }
+
+    @media only screen and (max-width: 780px) {
+        &__content {
+            max-width: none;
+        }
+
+        &__img {
+            &::after {
+                height: 60%;
+            }
+        }
+
+        &.expert {
+            flex-direction: column;
+    
+            [class*="__photo"] {
+                position: absolute;
+                right: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                margin-inline: calc(-1 * var(--hero-padding));
+                max-width: none;
+                width: 100%;
+    
+                &::after {
+                    position: inherit;
+                    content: '';
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 64%;
+                    background-image: var(--black-gradient);
+                }
+
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        &__content {
+            [class*="button"] {
+                width: 100%;
+            }
+        }
+    }
+}

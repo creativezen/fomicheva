@@ -1,0 +1,127 @@
+@use '../mixins/fluid-size' as size;
+
+.plate-properties {
+    --plate-space: 16px;
+    --plate-radius: var(--radius-medium);
+    --plate-icon-size: 24px;
+    --plate-icon-space: 10px;
+
+    padding: var(--plate-space);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    border-radius: var(--plate-radius);
+    border: 1px solid var(--gray-light);
+    background-color: var(--white);
+    @include size.calculate(font-size, 480px, 1600px, 12px, 16px);
+    color: var(--black);
+
+    &.gray,
+    &.green {
+        border: 0;
+    }
+
+    &.gray {
+        background-color: var(--light-gray);
+    }
+
+    &.green {
+        background-color: var(--light-green);
+    }
+
+    @media only screen and (max-width: 680px) {
+        --plate-space: 10px;
+        --plate-radius: var(--radius-small);
+        --plate-icon-size: 16px;
+        --plate-icon-space: 6px;
+
+        gap: 6px;
+    }
+}
+
+.plate-simple {
+    @extend .plate-properties;
+
+    &__title {
+        font-family: var(--font-text);
+        @include size.calculate(font-size, 480px, 1600px, 16px, 20px);
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--black);
+
+        & + * {
+            @include size.calculate(margin-top, 480px, 1600px, 6px, 10px);
+        }
+    
+        &.gray {
+            color: var(--gray);
+        }
+    
+        &.green {
+            color: var(--green-dark);
+        }
+    }
+}
+
+.plate-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+
+    > * {
+        flex-shrink: 0;
+        flex: 1;
+        height: auto;
+    }
+
+    &.row {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+    &.column {
+        flex-direction: column;
+    }
+
+    @media only screen and (max-width: 680px) {
+        gap: 8px;
+    }
+}
+
+.plate-icons {
+    @extend .plate-properties;
+
+    &__item {
+        display: flex;
+        gap: var(--plate-icon-space);
+        @include size.calculate(font-size, 480px, 1600px, 12px, 16px);
+
+        svg {
+            flex-shrink: 0;
+            width: var(--plate-icon-size);
+            height: var(--plate-icon-size);
+        }
+
+        svg + * {
+            /* компенсируем верхний отступ текста относительно иконки */
+            padding-top: 0.1em;
+        }
+
+        &.green svg {
+            fill: var(--green);
+        }
+
+        &.gray svg {
+            fill: var(--gray);
+        }
+
+        &.black svg {
+            fill: var(--black);
+        }
+    }
+}
