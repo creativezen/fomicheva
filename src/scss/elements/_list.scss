@@ -158,6 +158,10 @@
         &:last-child {
             padding-bottom: unset;
         }
+
+        .compact & {
+            padding: var(--list-space-medium) 0;
+        }
     }
 
     &__index {
@@ -192,6 +196,10 @@
             font-family: inherit;
             font-size: inherit;
             color: inherit;
+        }
+
+        .compact & {
+            @include size.calculate(font-size, 480px, 1600px, 20px, 24px);
         }
 
         .dark &,

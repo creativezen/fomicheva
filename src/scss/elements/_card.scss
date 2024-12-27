@@ -523,16 +523,10 @@
 
     &__body {
         flex: auto;
+        height: 210px;
         font-family: var(--font-text);
         @include size.calculate(font-size, 480px, 1600px, 13px, 16px);
         color: var(--gray) !important;
-        // Обрезаем текст по кол-ву строк
-        display: -webkit-box;
-        display: -moz-box;
-        line-clamp: 8;
-        -webkit-line-clamp: 8;
-        -webkit-box-orient: vertical;
-        -moz-box-orient: vertical;
         overflow: hidden;
         
         *:not([class]) {
@@ -548,13 +542,14 @@
         }
         
         /* Отталкиваем друг от друга текстовые элементы в вертикальном потоке */
-        > *:not(.card-title) + *,
+        > *:not(.card-title):not(img) + *,
         li + li {
             margin-top: 10px !important;
         }
 
         img {
             display: none;
+            margin-bottom: 10px !important;
         }
     }
     
