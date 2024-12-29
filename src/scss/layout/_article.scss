@@ -65,10 +65,10 @@
 		margin-top: calc(var(--article-space-small) * var(--article-space-scale));
 	}
 
-    > * + ul,
-	> * + ol,
-    > ul + *,
-    > ol + * {
+    > *:not(h2):not(h3):not(h4):not(h5):not(h6) + ul,
+	> *:not(h2):not(h3):not(h4):not(h5):not(h6) + ol,
+    > ul + *:not(h2):not(h3):not(h4):not(h5):not(h6),
+    > ol + *:not(h2):not(h3):not(h4):not(h5):not(h6) {
 		margin-top: var(--article-space-small);
 	}
 
@@ -76,8 +76,10 @@
         width: 100%;
     }
     
-    iframe + *,
-    * + iframe {
+    iframe + *:not(h2):not(h3):not(h4):not(h5):not(h6),
+    table + *:not(h2):not(h3):not(h4):not(h5):not(h6),
+    *:not(h2):not(h3):not(h4):not(h5):not(h6) + iframe,
+    *:not(h2):not(h3):not(h4):not(h5):not(h6) + table {
         margin-top: var(--article-space-small);
     }
 

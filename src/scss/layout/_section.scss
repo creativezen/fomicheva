@@ -181,6 +181,12 @@
         margin-top: var(--offset-default);
     }
 
+    &__tagline {
+        font-weight: 600;
+        @include size.calculate(font-size, 480px, 1600px, 18px, 22px);
+        letter-spacing: -0.04em;
+    }
+
     & + &:not(.stream) {
         margin-top: var(--offset-default);
     }

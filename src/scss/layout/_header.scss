@@ -133,6 +133,7 @@
 
             .sub-menu-item {
                 width: 100%;
+                height: unset;
                 background-color: var(--white);
                 border-radius: 0;
                 padding: 0;
@@ -141,6 +142,7 @@
                     width: inherit;
                     padding: 14px;
                     justify-content: flex-start;
+                    line-height: unset;
 
                     @include mobile.hover {
                         background-color: var(--gray-bg);

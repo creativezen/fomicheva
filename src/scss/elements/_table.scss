@@ -1,0 +1,64 @@
+@use '../mixins/fluid-size' as size;
+
+
+table {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--table-border);
+    text-align: left;
+    border-radius: var(--radius-medium);
+
+    /* Скрываем скроллбар */
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 0;
+        background-color: transparent;
+    }
+
+    tbody {
+        display: table;
+        width: 100%;
+    }
+
+    * {
+        text-align: inherit;
+    }
+
+    tr {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+
+        > * {
+            flex: 1;
+        }
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    th,
+    td {
+        padding: 0.6em 1em;
+        border: 1px solid var(--table-border);
+        white-space: normal;
+        font-size: inherit;
+        line-height: 1.2;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    @media only screen and (max-width: 780px) {
+        display: block;
+
+        td,
+        th {
+            min-width: 140px;
+        }
+    }
+}
